@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pathfind Education Ltd</title>
+<style>
+  :root {
+    --color-primary: #112649;       /* Deep Blue - brand */
+    --color-accent: #1ABC9C;        /* Teal for buttons */
+    --color-light: #4DA8DA;         /* Light accent */
+    --color-bg: #F7F9FC;            /* Off-white background */
+    --color-text: #333333;
+    --color-white: #FFFFFF;
+  }
+
+  * { box-sizing: border-box; margin:0; padding:0; }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+  }
+
+  /* Hero header with animated gradient + subtle pattern */
+  header {
+    position: relative;
+    background: linear-gradient(270deg, #112649, #1A2D5C, #112649);
+    background-size: 600% 600%;
+    animation: gradientBG 20s ease infinite;
+    color: var(--color-white);
+    text-align: center;
+    padding: 120px 20px;
+    overflow: hidden;
+  }
+
+  header::after {
+    content: '';
+    position: absolute;
+    top:0; left:0; width:100%; height:100%;
+    background-image: repeating-radial-gradient(circle at 10% 20%, rgba(255,255,255,0.05), rgba(255,255,255,0.05) 1px, transparent 1px, transparent 100px);
+    z-index: 1;
+  }
+
+  header h1, header p {
+    position: relative;
+    z-index: 2;
+  }
+
+  header h1 {
+    font-size: 3em;
+    margin-bottom: 0.3em;
+    letter-spacing: 1px;
+  }
+
+  header p {
+    font-size: 1.3em;
+    max-width: 600px;
+    margin: auto;
+  }
+
+  @keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  main {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 0 20px;
+  }
+
+  .contact-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  .contact-buttons a {
+    text-decoration: none;
+    color: var(--color-white);
+    padding: 15px 30px;
+    margin: 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: transform 0.2s, background-color 0.3s, box-shadow 0.3s;
+  }
+
+  .contact-buttons a.whatsapp { background: var(--color-accent); }
+  .contact-buttons a.email { background: var(--color-light); }
+
+  .contact-buttons a:hover {
+    transform: scale(1.05);
+    opacity: 0.95;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  }
+
+  .social-links {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .social-links a {
+    margin: 0 15px;
+    color: var(--color-white);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1em;
+    transition: color 0.3s;
+  }
+
+  .social-links a:hover { color: var(--color-accent); }
+
+  .form-container {
+    background: var(--color-white);
+    padding: 40px 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .form-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  }
+
+  .form-container iframe {
+    width: 100%;
+    height: 650px;
+    border: none;
+    border-radius: 8px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: var(--color-text);
+    font-size: 0.9em;
+  }
+
+  @media (max-width: 600px){
+    header { padding: 80px 20px; }
+    header h1 { font-size: 2.2em; }
+    header p { font-size: 1em; }
+    .form-container iframe { height: 500px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Pathfind Education Ltd</h1>
+  <p>Helping international students study in the UK, USA, Canada, Australia, and NZ.</p>
+</header>
+
+<main>
+  <div class="contact-buttons">
+    <a href="https://wa.me/447836337844" class="whatsapp" target="_blank">Chat on WhatsApp</a>
+    <a href="mailto:Info@pathfindeducation.com" class="email">Email Us</a>
+  </div>
+
+  <div class="social-links">
+    <a href="https://www.tiktok.com/@pathfindeducation?_r=1&_t=ZS-91TLWbW9CDa" target="_blank">TikTok</a>
+    <a href="https://www.facebook.com/share/1CpsPYs9Qo/" target="_blank">Facebook</a>
+    <a href="https://www.linkedin.com/company/pathfind-education-ltd/" target="_blank">LinkedIn</a>
+  </div>
+
+  <div class="form-container">
+    <iframe src="https://link.pathfindeducation.com/apply" title="Enquiry Form"></iframe>
+  </div>
+</main>
+
+<footer>
+  &copy; 2025 Pathfind Education Ltd. All Rights Reserved.
+</footer>
+
+</body>
+</html>
