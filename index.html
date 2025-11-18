@@ -6,10 +6,10 @@
 <title>Pathfind Education Ltd</title>
 <style>
   :root {
-    --color-primary: #112649;
-    --color-accent: #1ABC9C;
-    --color-light: #4DA8DA;
-    --color-bg: #F7F9FC;
+    --color-primary: #112649;       /* Deep Blue - brand */
+    --color-accent: #1ABC9C;        /* Teal for buttons */
+    --color-light: #4DA8DA;         /* Light accent */
+    --color-bg: #F7F9FC;            /* Off-white background */
     --color-text: #333333;
     --color-white: #FFFFFF;
   }
@@ -30,16 +30,13 @@
     animation: gradientBG 20s ease infinite;
     color: var(--color-white);
     text-align: center;
-    padding: 120px 20px;
+    padding: 100px 20px 60px 20px;
     overflow: hidden;
   }
 
-  header::after {
-    content: '';
-    position: absolute;
-    top:0; left:0; width:100%; height:100%;
-    background-image: repeating-radial-gradient(circle at 10% 20%, rgba(255,255,255,0.05), rgba(255,255,255,0.05) 1px, transparent 1px, transparent 100px);
-    z-index: 1;
+  header img {
+    max-width: 150px;
+    margin-bottom: 20px;
   }
 
   header h1, header p {
@@ -69,6 +66,7 @@
     max-width: 900px;
     margin: 50px auto;
     padding: 0 20px;
+    text-align: center;
   }
 
   .contact-buttons {
@@ -90,6 +88,7 @@
 
   .contact-buttons a.whatsapp { background: var(--color-accent); }
   .contact-buttons a.email { background: var(--color-light); }
+  .contact-buttons a.cta { background: #f39c12; } /* CTA for form */
 
   .contact-buttons a:hover {
     transform: scale(1.05);
@@ -103,15 +102,29 @@
   }
 
   .social-links a {
-    margin: 0 15px;
-    color: var(--color-white);
+    margin: 0 10px;
+    color: var(--color-primary);
     text-decoration: none;
     font-weight: 600;
     font-size: 1.1em;
+    display: inline-flex;
+    align-items: center;
     transition: color 0.3s;
   }
 
   .social-links a:hover { color: var(--color-accent); }
+
+  .social-links img {
+    width: 24px;
+    height: 24px;
+    margin-right: 6px;
+  }
+
+  .legal {
+    font-size: 0.85em;
+    color: #555;
+    margin: 40px 0;
+  }
 
   footer {
     text-align: center;
@@ -130,6 +143,7 @@
 <body>
 
 <header>
+  <img src="YOUR_LOGO_URL_HERE" alt="Pathfind Education Ltd Logo">
   <h1>Pathfind Education Ltd</h1>
   <p>Helping international students study in the UK, USA, Canada, Australia, and NZ.</p>
 </header>
@@ -138,12 +152,24 @@
   <div class="contact-buttons">
     <a href="https://wa.me/447836337844" class="whatsapp" target="_blank">Chat on WhatsApp</a>
     <a href="mailto:Info@pathfindeducation.com" class="email">Email Us</a>
+    <a href="https://link.pathfindeducation.com/apply" class="cta" target="_blank">Submit an Enquiry</a>
   </div>
 
   <div class="social-links">
-    <a href="https://www.tiktok.com/@pathfindeducation?_r=1&_t=ZS-91TLWbW9CDa" target="_blank">TikTok</a>
-    <a href="https://www.facebook.com/share/1CpsPYs9Qo/" target="_blank">Facebook</a>
-    <a href="https://www.linkedin.com/company/pathfind-education-ltd/" target="_blank">LinkedIn</a>
+    <a href="https://www.tiktok.com/@pathfindeducation?_r=1&_t=ZS-91TLWbW9CDa" target="_blank">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="TikTok">TikTok
+    </a>
+    <a href="https://www.facebook.com/share/1CpsPYs9Qo/" target="_blank">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook">Facebook
+    </a>
+    <a href="https://www.linkedin.com/company/pathfind-education-ltd/" target="_blank">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn">LinkedIn
+    </a>
+  </div>
+
+  <div class="legal">
+    <p>Companies House Number: 12345678 | Registered Address: 1 Example Street, London, UK</p>
+    <p>We are fully GDPR compliant. All personal data is handled in accordance with GDPR regulations.</p>
   </div>
 </main>
 
