@@ -1,8 +1,36 @@
 <header>
   <img src="https://i.imgur.com/JSe2Jgf.png" alt="Pathfind Education Ltd Logo">
-  <h1>Pathfind Education Ltd</h1>
   <p>Helping international students study in the UK, USA, Canada, Australia, and NZ.</p>
 </header>
+
+<main>
+  <div class="contact-buttons">
+    <a href="https://wa.me/447836337844" class="whatsapp" target="_blank">Chat on WhatsApp</a>
+    <a href="mailto:Info@pathfindeducation.com" class="email">Email Us</a>
+    <a href="https://link.pathfindeducation.com/apply" class="cta" target="_blank">Submit an Enquiry</a>
+  </div>
+
+  <div class="social-links">
+    <a href="https://www.tiktok.com/@pathfindeducation?_r=1&_t=ZS-91TLWbW9CDa" target="_blank">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="TikTok">TikTok
+    </a>
+    <a href="https://www.facebook.com/share/1CpsPYs9Qo/" target="_blank">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook">Facebook
+    </a>
+    <a href="https://www.linkedin.com/company/pathfind-education-ltd/" target="_blank">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn">LinkedIn
+    </a>
+  </div>
+
+  <div class="legal">
+    <p>Companies House Number: 16768409 | Registered Address: 71-75 Shelton Street, Covent Garden, WC2H 9JQ, London, UK</p>
+    <p>We are fully GDPR compliant. All personal data is handled in accordance with GDPR regulations.</p>
+  </div>
+</main>
+
+<footer>
+  &copy; 2025 Pathfind Education Ltd. All Rights Reserved.
+</footer>
 
 <style>
   header {
@@ -10,8 +38,8 @@
     background: url('https://i.imgur.com/3rYg8Nn.jpeg') center center / cover no-repeat;
     color: #FFFFFF;
     text-align: center;
-    padding: 100px 20px 60px 20px;
-    min-height: 50vh; /* upper half of the page */
+    padding: 120px 20px 60px 20px; /* more padding for bigger logo */
+    min-height: 50vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -19,29 +47,22 @@
     overflow: hidden;
   }
 
-  /* dark overlay for better readability */
   header::before {
     content: "";
     position: absolute;
     top:0; left:0; width:100%; height:100%;
-    background: rgba(17,38,73,0.55); /* semi-transparent deep blue */
+    background: rgba(17,38,73,0.55);
     z-index:1;
   }
 
-  header img, header h1, header p {
+  header img, header p {
     position: relative;
-    z-index:2; /* above overlay */
+    z-index:2;
   }
 
   header img {
-    max-width: 150px;
+    max-width: 250px; /* bigger logo */
     margin-bottom: 20px;
-  }
-
-  header h1 {
-    font-size: 3em;
-    margin-bottom: 0.3em;
-    letter-spacing: 1px;
   }
 
   header p {
@@ -51,8 +72,75 @@
   }
 
   @media (max-width: 600px){
-    header { padding: 80px 20px; }
-    header h1 { font-size: 2.2em; }
+    header { padding: 100px 20px; }
+    header img { max-width: 180px; }
     header p { font-size: 1em; }
+  }
+
+  /* Contact buttons */
+  .contact-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  .contact-buttons a {
+    text-decoration: none;
+    color: #FFFFFF;
+    padding: 15px 30px;
+    margin: 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: transform 0.2s, background-color 0.3s, box-shadow 0.3s;
+  }
+
+  .contact-buttons a.whatsapp { background: #1ABC9C; }
+  .contact-buttons a.email { background: #4DA8DA; }
+  .contact-buttons a.cta { background: #f39c12; }
+
+  .contact-buttons a:hover {
+    transform: scale(1.05);
+    opacity: 0.95;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  }
+
+  /* Social links */
+  .social-links {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .social-links a {
+    margin: 0 10px;
+    color: #112649;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1em;
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.3s;
+  }
+
+  .social-links a:hover { color: #1ABC9C; }
+
+  .social-links img {
+    width: 24px;
+    height: 24px;
+    margin-right: 6px;
+  }
+
+  /* Legal text */
+  .legal {
+    font-size: 0.85em;
+    color: #555;
+    margin: 40px 0;
+  }
+
+  footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: #333333;
+    font-size: 0.9em;
   }
 </style>
