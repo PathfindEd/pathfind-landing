@@ -107,12 +107,6 @@
     h2{color:var(--primary); margin:0 0 16px; font-size: 24px;}
     .muted{color:var(--muted); font-size: 15px;}
 
-    /* Partner Logos */
-    .partner-logos{display:flex; gap:30px; align-items:center; flex-wrap:wrap; justify-content: flex-end;}
-    /* Specific styling to ensure logos look uniform */
-    .partner-img{height:35px; width:auto; opacity:0.8; filter: grayscale(100%); transition: filter 0.3s;}
-    .partner-img:hover{filter: grayscale(0%);}
-
     /* Steps */
     .steps{display:flex; gap:16px; flex-wrap:wrap}
     .step{flex:1; min-width:200px; padding:24px; border-radius:8px; background:#fff; border:1px solid #eef2f7; position: relative;}
@@ -142,7 +136,6 @@
       .grid{grid-template-columns:repeat(2,1fr)}
       .hero{padding:28px 20px; text-align:center; justify-content:center;}
       .brand{flex-direction: column;}
-      .partner-logos{justify-content: center; margin-top: 10px;}
       h1{font-size:26px}
     }
     @media(max-width:600px){
@@ -181,22 +174,6 @@
   </header>
 
   <main class="container">
-
-    <!-- Trust / Partners Section -->
-    <section class="card" style="padding: 24px;">
-      <div style="display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap">
-        <div>
-          <strong style="color:var(--primary); font-size: 16px;">Officially Recognised Channels</strong>
-          <div class="muted" style="font-size: 14px;">We process applications through the world's leading education platforms.</div>
-        </div>
-        <div class="partner-logos">
-          <!-- UPDATED: Using high-availability Wikimedia/PR sources for logos -->
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/ApplyBoard_Logo.svg/1200px-ApplyBoard_Logo.svg.png" alt="ApplyBoard" class="partner-img">
-          <img src="https://mma.prnewswire.com/media/1166792/Adventus_io_Logo.jpg" alt="Adventus.io" class="partner-img" style="mix-blend-mode: multiply;"> 
-          <img src="https://upload.wikimedia.org/wikipedia/commons/2/22/UpGrad_logo.svg" alt="UpGrad" class="partner-img">
-        </div>
-      </div>
-    </section>
 
     <!-- Services -->
     <section class="card">
@@ -249,29 +226,20 @@
       </div>
       
       <div class="testimonial-grid">
-        <!-- ========================================================================= -->
-        <!-- ACTION REQUIRED: PASTE YOUR REAL GOOGLE REVIEWS BELOW TO REPLACE PLACEHOLDERS -->
-        <!-- ========================================================================= -->
-        
+        <!-- TESTIMONIALS -->
         <div class="testimonial">
           <div class="stars">★★★★★</div>
           <strong>"Highly recommend!"</strong>
-          <div class="muted" style="margin-top:4px;">"Pathfind helped me shortlist universities I had never thought of, they personalised the choices to suit my preferences and budget. Equally their partners were really helpful and helped with my applications.
-I highly recommend Pathfind to anyone looking at global education opportunities."</div>
+          <div class="muted" style="margin-top:4px;">"Pathfind helped me shortlist universities I had never thought of, they personalised the choices to suit my preferences and budget. Equally their partners were really helpful and helped with my applications. I highly recommend Pathfind to anyone looking at global education opportunities."</div>
           <div style="margin-top:8px; font-size:12px; font-weight:bold; color:var(--primary);">- Na</div>
         </div>
         
         <div class="testimonial">
           <div class="stars">★★★★★</div>
           <strong>"Excellent service"</strong>
-          <div class="muted" style="margin-top:4px;">"Highly recommend!
-I recently got in touch with Pathfind Education and had a great experience from start to finish. The team provided excellent service and took the time to create a personalised university shortlist based on my academic history and finances. Their guidance was clear, helpful, and genuinely tailored to my goals.
-
-I’m now planning to move forward with my application through them, and I really appreciate that they also offer free support for university applications and visa processes."</div>
+          <div class="muted" style="margin-top:4px;">"Highly recommend! I recently got in touch with Pathfind Education and had a great experience from start to finish. The team provided excellent service and took the time to create a personalised university shortlist based on my academic history and finances. Their guidance was clear, helpful, and genuinely tailored to my goals."</div>
           <div style="margin-top:8px; font-size:12px; font-weight:bold; color:var(--primary);">- Asma</div>
         </div>
-        
-        <!-- ========================================================================= -->
       </div>
     </section>
     
