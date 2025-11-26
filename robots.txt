@@ -44,9 +44,9 @@ Disallow: /
 
 # --- STANDARD SEARCH ENGINE ALLOWANCES (Critical for SEO) ---
 
-# We explicitly allow these. Note: Because we use the explicit Disallow strategy above,
+# We explicitly allow these. The "Allow: /" under Googlebot ensures the main crawler
 
-# we do NOT need a dangerous "User-agent: * Disallow: /" blanket rule.
+# is never blocked, resolving the Search Console issue.
 
 User-agent: Googlebot
 Allow: /
