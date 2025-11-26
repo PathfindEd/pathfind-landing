@@ -1,31 +1,67 @@
-# Allow legitimate search engines
+This robots.txt file implements a layered strategy to block known AI/LLM
+
+training crawlers and data aggregators while explicitly allowing major search engines.
+
+--- CRITICAL BLOCKS FOR LLM TRAINING DATA ---
+
+1. Block Google's specific AI/LLM training user agent (for Bard/Gemini training).
+
+User-agent: Google-Extended
+Disallow: /
+
+2. Block OpenAI's primary content ingestion bot (used for GPT training).
+
+User-agent: ChatGPT-User
+Disallow: /
+
+3. Block Anthropic's AI model training bot.
+
+User-agent: anthropic-ai
+Disallow: /
+
+4. Block Common Crawl, a massive public dataset often used for LLM training.
+
+User-agent: CCBot
+Disallow: /
+
+5. Block Apple's AI/LLM user agent.
+
+User-agent: Applebot-Extended
+Disallow: /
+
+6. Block other known data mining/aggregator user agents.
+
+User-agent: Amazonbot
+Disallow: /
+User-agent: Facebot
+Disallow: /
+User-agent: Bytespider
+Disallow: /
+User-agent: oot-bot
+Disallow: /
+User-agent: Yeti
+Disallow: /
+
+--- STANDARD SEARCH ENGINE ALLOWANCES (Critical for SEO) ---
+
+We explicitly allow these. Note: Because we use the explicit Disallow strategy above,
+
+we do NOT need a dangerous "User-agent: * Disallow: /" blanket rule.
+
 User-agent: Googlebot
-Disallow:
+Allow: /
 
 User-agent: Bingbot
-Disallow:
+Allow: /
 
 User-agent: DuckDuckBot
-Disallow:
+Allow: /
 
-# Block all other bots
-User-agent: *
-Disallow: /
+User-agent: Baiduspider
+Allow: /
 
-# Specifically block known AI/content bots
-User-agent: OpenAI
-Disallow: /
+--- SITEMAP LOCATION (Crucial for proper indexing) ---
 
-User-agent: bard-google
-Disallow: /
+This must be the direct URL to the sitemap file.
 
-User-agent: ChatGPT
-Disallow: /
-
-User-agent: ai-semantics
-Disallow: /
-
-User-agent: huggingface
-Disallow: /
-
-# Add more AI bots as needed
+Sitemap: https://www.google.com/search?q=https://www.pathfindeducation.com/sitemap.xml
