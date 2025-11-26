@@ -1,35 +1,35 @@
-This robots.txt file implements a layered strategy to block known AI/LLM
+# This robots.txt file implements a layered strategy to block known AI/LLM
 
-training crawlers and data aggregators while explicitly allowing major search engines.
+# training crawlers and data aggregators while explicitly allowing major search engines.
 
---- CRITICAL BLOCKS FOR LLM TRAINING DATA ---
+# --- CRITICAL BLOCKS FOR LLM TRAINING DATA ---
 
-1. Block Google's specific AI/LLM training user agent (for Bard/Gemini training).
+# 1. Block Google's specific AI/LLM training user agent (for Bard/Gemini training).
 
 User-agent: Google-Extended
 Disallow: /
 
-2. Block OpenAI's primary content ingestion bot (used for GPT training).
+# 2. Block OpenAI's primary content ingestion bot (used for GPT training).
 
 User-agent: ChatGPT-User
 Disallow: /
 
-3. Block Anthropic's AI model training bot.
+# 3. Block Anthropic's AI model training bot.
 
 User-agent: anthropic-ai
 Disallow: /
 
-4. Block Common Crawl, a massive public dataset often used for LLM training.
+# 4. Block Common Crawl, a massive public dataset often used for LLM training.
 
 User-agent: CCBot
 Disallow: /
 
-5. Block Apple's AI/LLM user agent.
+# 5. Block Apple's AI/LLM user agent.
 
 User-agent: Applebot-Extended
 Disallow: /
 
-6. Block other known data mining/aggregator user agents.
+# 6. Block other known data mining/aggregator user agents.
 
 User-agent: Amazonbot
 Disallow: /
@@ -42,11 +42,11 @@ Disallow: /
 User-agent: Yeti
 Disallow: /
 
---- STANDARD SEARCH ENGINE ALLOWANCES (Critical for SEO) ---
+# --- STANDARD SEARCH ENGINE ALLOWANCES (Critical for SEO) ---
 
-We explicitly allow these. Note: Because we use the explicit Disallow strategy above,
+# We explicitly allow these. Note: Because we use the explicit Disallow strategy above,
 
-we do NOT need a dangerous "User-agent: * Disallow: /" blanket rule.
+# we do NOT need a dangerous "User-agent: * Disallow: /" blanket rule.
 
 User-agent: Googlebot
 Allow: /
@@ -60,8 +60,8 @@ Allow: /
 User-agent: Baiduspider
 Allow: /
 
---- SITEMAP LOCATION (Crucial for proper indexing) ---
+# --- SITEMAP LOCATION (Crucial for proper indexing) ---
 
-This must be the direct URL to the sitemap file.
+# This must be the direct URL to the sitemap file.
 
-Sitemap: https://www.google.com/search?q=https://www.pathfindeducation.com/sitemap.xml
+Sitemap: https://www.pathfindeducation.com/sitemap.xml
