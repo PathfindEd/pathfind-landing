@@ -20,6 +20,8 @@
   <meta property="og:image" content="https://i.imgur.com/JSe2Jgf.png">
   <meta property="og:url" content="https://www.pathfindeducation.com">
 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
           <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -126,6 +128,17 @@
     .social-links a{display:flex; align-items:center; gap:10px; font-size:15px; color: var(--primary); font-weight: 500;}
     .social-links img{width:22px; height:22px; filter: invert(12%) sepia(27%) saturate(5556%) hue-rotate(206deg) brightness(96%) contrast(96%);}
 
+    /* NEW: Style for Font Awesome icon to match image size/color */
+    .social-links i.fa-link-icon {
+      width: 22px;
+      height: 22px;
+      font-size: 22px;
+      color: var(--primary);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
     /* Accordion / FAQ styling */
     details {border-bottom: 1px solid #eef2f7; padding: 12px 0;}
     summary {cursor: pointer; font-weight: 600; color: var(--primary); outline: none;}
@@ -219,6 +232,7 @@
       <div style="display:flex; justify-content:space-between; align-items:end; flex-wrap:wrap; gap:10px;">
         <h2>What Students Say</h2>
         <a href="https://share.google/GhSf7f0mhIMbDmENn" target="_blank" style="color:var(--accent); font-weight:600; font-size:14px;">View all Google Reviews &rarr;</a>
+        
       </div>
       
       <div class="testimonial-grid">
@@ -300,7 +314,7 @@
                  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn">LinkedIn
                </a>
                               <a href="https://blog.pathfindeducation.com" target="_blank">
-                 <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/world.svg" alt="Blog">Blog
+                 <i class="fa-solid fa-link fa-link-icon"></i>Blog
                </a>
             </div>
           </div>
