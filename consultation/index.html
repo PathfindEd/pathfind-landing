@@ -4,38 +4,6 @@ title: Personalised Study Abroad Assessment
 permalink: /consultation/
 ---
 
-<style>
-    :root{
-        --primary:#112649; /* Main brand navy */
-        --accent:#f5a623; /* Gold/Orange accent */
-        --muted:#6b7280;
-        --light-gray: #d1d5db;
-    }
-    .form-container { max-width: 700px; margin: 50px auto; padding: 20px; background: #fff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid #edf2f7; }
-    .form-header-title { color: var(--primary); font-size: 28px; margin-bottom: 8px; text-align: center; }
-    .form-header-tagline { color: var(--muted); text-align: center; margin-bottom: 30px; font-size: 16px; }
-    .form-page { border: none; padding: 0; margin: 0; }
-    .form-page legend { font-size: 22px; font-weight: 700; color: var(--primary); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--accent); width: 100%; }
-    .form-page label { display: block; margin-top: 15px; margin-bottom: 5px; font-weight: 600; color: var(--primary); font-size: 15px; }
-    .form-page input[type="text"], .form-page input[type="email"], .form-page input[type="tel"], .form-page input[type="date"], .form-page textarea { width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--light-gray); border-radius: 6px; font-size: 15px; box-sizing: border-box; transition: border-color 0.2s; }
-    .form-page input:focus, .form-page textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px rgba(245, 166, 35, 0.3); }
-    .radio-group { padding: 10px; border-radius: 6px; transition: border 0.3s; line-height: 1.5; }
-    .radio-group label { font-weight: 400; color: #333; margin-top: 8px; display: flex; align-items: center; }
-    .radio-group input[type="radio"], .form-page input[type="checkbox"] { margin-right: 8px; min-width: 16px; }
-    #consent-label { display: block; padding: 12px; border: 1px solid var(--light-gray); border-radius: 6px; margin-top: 20px; cursor: pointer; transition: background-color 0.3s; }
-    .nav-buttons { display: flex; justify-content: space-between; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eef2f7; }
-    .dark-button { background-color: var(--primary); color: #fff; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; transition: background-color 0.2s; }
-    .dark-button:hover { background-color: #0d1a33; }
-    .accent-button, .submit-button { background-color: var(--accent); color: var(--primary); padding: 10px 20px; border: 2px solid var(--accent); border-radius: 6px; cursor: pointer; font-weight: 700; transition: opacity 0.2s; }
-    .accent-button:hover, .submit-button:hover { opacity: 0.9; }
-    #progress-indicator { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; padding-bottom: 10px; border-bottom: 1px solid var(--light-gray); }
-    .step { width: 30px; height: 30px; border-radius: 50%; background: var(--light-gray); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; transition: background-color 0.3s; position: relative; }
-    .step.active { background: var(--accent); }
-    .step:not(:last-child)::after { content: ''; position: absolute; top: 50%; left: 100%; width: calc((100vw - 40px) / 4 - 30px); max-width: 100px; height: 2px; background: var(--light-gray); z-index: -1; transform: translateY(-50%); }
-    .hidden { display: none; }
-</style>
-
-
 <div class="form-container">
     <h1 class="form-header-title">Personalised Study Abroad Assessment</h1>
     <p class="form-header-tagline">
@@ -53,6 +21,7 @@ permalink: /consultation/
         
         <fieldset class="form-page" id="page-1">
             <legend>Step 1: Personal Contact Details</legend>
+            
             <label for="email">Email <span style="color:red">*</span></label>
             <input type="email" id="email" name="email" required>
 
@@ -239,7 +208,7 @@ permalink: /consultation/
         
         // Clear previous error states
         currentFieldset.querySelectorAll('input, select, textarea').forEach(input => {
-            input.style.borderColor = '#d1d5db'; 
+            input.style.borderColor = 'var(--light-gray)'; 
         });
         currentFieldset.querySelectorAll('.radio-group, #consent-label').forEach(el => {
             el.style.border = 'none';
@@ -309,10 +278,13 @@ permalink: /consultation/
     }
 
     function validateAndSubmit() {
+        // Run validation for the final page (Page 4)
         nextPage(4); 
         
         const form = document.querySelector('form[name="consultation"]');
         
+        // checkValidity() will use the 'required' attributes to check everything
+        // We only submit if validation passes AND we are on the final page (to prevent accidental submission)
         if (form.checkValidity() && currentPage === totalPages) {
             form.submit();
         }
