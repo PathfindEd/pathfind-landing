@@ -9,7 +9,7 @@ permalink: /thank-you/
     <section class="card" style="padding: 48px 32px; text-align: center; border: 1px solid var(--accent);">
         
         <div style="font-size: 60px; line-height: 1; color: var(--accent); margin-bottom: 10px;" aria-hidden="true">
-            &#10003;
+            &#x2713;
         </div>
         
         <h2 style="color: var(--primary); font-size: 32px; margin-bottom: 8px;">
