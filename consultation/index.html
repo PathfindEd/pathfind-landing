@@ -1,0 +1,406 @@
+---
+layout: default
+title: Personalised Study Abroad Assessment
+permalink: /consultation/
+---
+
+<style>
+    /* --- BRAND COLORS --- */
+    :root {
+        --color-dark-blue: #112649; /* Primary */
+        --color-accent-orange: #f5a623; /* Accent */
+        --color-light-gray: #e5e7eb;
+        --color-text-gray: #6b7280;
+    }
+
+    /* --- Form Branding and Layout --- */
+    .form-container {
+        max-width: 700px;
+        margin: 40px auto;
+        padding: 40px;
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(17, 38, 73, 0.1); /* Dark blue shadow */
+    }
+
+    .form-header-title {
+        color: var(--color-dark-blue);
+        font-size: 2.2em;
+        font-weight: 800;
+        margin-bottom: 5px;
+    }
+
+    .form-header-tagline, .upload-note {
+        color: var(--color-text-gray);
+        margin-bottom: 25px;
+    }
+
+    /* --- Fieldset (Page) Styling --- */
+    .form-page {
+        border: none;
+        padding: 0;
+        margin-bottom: 30px;
+    }
+
+    .form-page legend {
+        font-size: 1.5em;
+        color: var(--color-accent-orange);
+        font-weight: 600;
+        margin-bottom: 20px;
+        padding: 0;
+        border-bottom: 2px solid var(--color-accent-orange);
+        display: inline-block;
+    }
+
+    /* Hide pages initially (controlled by JS) */
+    .hidden {
+        display: none;
+    }
+
+    /* --- Input and Label Styling --- */
+    label {
+        display: block;
+        font-weight: 600;
+        color: var(--color-dark-blue);
+        margin-top: 15px;
+        margin-bottom: 5px;
+        line-height: 1.4;
+    }
+
+    input[type="text"], input[type="email"], input[type="tel"], input[type="date"], select, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid var(--color-light-gray);
+        border-radius: 8px;
+        box-sizing: border-box;
+        font-size: 1em;
+        color: #333;
+        transition: border-color 0.2s;
+    }
+
+    input[type="radio"], input[type="checkbox"] {
+        margin-right: 8px;
+    }
+
+    .radio-group label {
+        display: inline-block;
+        font-weight: 400;
+        color: #333;
+        margin-right: 20px;
+        margin-top: 5px;
+        cursor: pointer;
+    }
+
+    input:focus, select:focus, textarea:focus {
+        border-color: var(--color-accent-orange);
+        outline: none;
+    }
+
+    .upload-note {
+        font-style: italic;
+        font-size: 0.9em;
+    }
+
+    /* --- Navigation Buttons --- */
+    .nav-buttons {
+        margin-top: 30px;
+        display: flex;
+        gap: 15px;
+        justify-content: flex-end;
+    }
+
+    button {
+        padding: 12px 25px;
+        border: none;
+        border-radius: 8px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background-color 0.2s, opacity 0.2s;
+    }
+
+    .accent-button {
+        background-color: var(--color-accent-orange);
+        color: var(--color-dark-blue);
+    }
+
+    .accent-button:hover {
+        background-color: #e59512;
+    }
+
+    .dark-button {
+        background-color: var(--color-dark-blue);
+        color: #fff;
+    }
+
+    .dark-button:hover {
+        background-color: #0b1a32;
+    }
+
+    .submit-button {
+        background-color: var(--color-accent-orange);
+        color: var(--color-dark-blue);
+        width: 100%;
+        margin-top: 20px;
+        font-size: 1.1em;
+    }
+
+    /* --- Progress Indicator --- */
+    #progress-indicator {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 30px;
+    }
+
+    .step {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: var(--color-light-gray);
+        color: var(--color-dark-blue);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 700;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .step.active {
+        background-color: var(--color-accent-orange);
+        color: var(--color-dark-blue);
+        border: 2px solid var(--color-dark-blue);
+    }
+</style>
+
+
+<div class="form-container">
+    <h1 class="form-header-title">Personalised Study Abroad Assessment</h1>
+    <p class="form-header-tagline">
+        Pathfind Education offers free, honest advice to help students apply to universities in the UK, USA, Australia, Canada, and Europe. We’re paid by universities, not students, so our guidance is transparent and pressure-free.
+    </p>
+
+    <form name="consultation" method="POST" action="https://consultation-handler.wild-morning-134b.workers.dev/" enctype="multipart/form-data">
+        
+        <div id="progress-indicator">
+            <span class="step active" id="step-1">1</span>
+            <span class="step" id="step-2">2</span>
+            <span class="step" id="step-3">3</span>
+            <span class="step" id="step-4">4</span>
+        </div>
+        
+        <fieldset class="form-page" id="page-1">
+            <legend>Step 1: Personal Contact Details</legend>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="full_name">Full Name</label>
+            <input type="text" id="full_name" name="full_name" required>
+
+            <label for="whatsapp_number">Whatsapp number (with country code)</label>
+            <input type="tel" id="whatsapp_number" name="whatsapp_number">
+            
+            <label for="date_of_birth">Date of Birth</label>
+            <input type="date" id="date_of_birth" name="date_of_birth">
+
+            <label for="city_country">Current City & Country</label>
+            <input type="text" id="city_country" name="city_country">
+
+            <div class="nav-buttons">
+                <button type="button" class="accent-button" onclick="nextPage(1)">Next Step &rarr;</button>
+            </div>
+        </fieldset>
+
+        <fieldset class="form-page hidden" id="page-2">
+            <legend>Step 2: Academic Background</legend>
+            
+            <label>What is the highest qualification you have completed?</label>
+            <div class="radio-group">
+                <label><input type="radio" name="highest_qualification" value="O Levels / iGCSE/ 10th Grade" required> O Levels / iGCSE/ 10th Grade</label><br>
+                <label><input type="radio" name="highest_qualification" value="A Levels / 12th Grade" required> A Levels / 12th Grade - FA / FSc / ICS / ICom</label><br>
+                <label><input type="radio" name="highest_qualification" value="Bachelor’s Degree" required> Bachelor’s Degree</label><br>
+                <label><input type="radio" name="highest_qualification" value="Master’s Degree" required> Master’s Degree</label><br>
+                <label><input type="radio" name="highest_qualification" value="Other Qualification" required> Other:</label>
+            </div>
+
+            <label for="full_course_name">What was the full course name?</label>
+            <input type="text" id="full_course_name" name="full_course_name">
+
+            <label for="completion_details">Year completed and grade achieved or predicted?</label>
+            <input type="text" id="completion_details" name="completion_details">
+
+            <div class="nav-buttons">
+                <button type="button" class="dark-button" onclick="prevPage(2)">&larr; Previous</button>
+                <button type="button" class="accent-button" onclick="nextPage(2)">Next Step &rarr;</button>
+            </div>
+        </fieldset>
+        
+        <fieldset class="form-page hidden" id="page-3">
+            <legend>Step 3: Study Preferences</legend>
+            
+            <label>Which course level do you plan to study?</label>
+            <div class="radio-group">
+                <label><input type="radio" name="course_level" value="Foundation / Pathway" required> Foundation / Pathway</label><br>
+                <label><input type="radio" name="course_level" value="Undergraduate (Bachelor’s)" required> Undergraduate (Bachelor’s)</label><br>
+                <label><input type="radio" name="course_level" value="Postgraduate (Master’s)" required> Postgraduate (Master’s)</label><br>
+                <label><input type="radio" name="course_level" value="PhD / Research" required> PhD / Research</label><br>
+                <label><input type="radio" name="course_level" value="Other Course Level" required> Other:</label>
+            </div>
+
+            <label for="target_subject">Subject you wish to study?</label>
+            <input type="text" id="target_subject" name="target_subject">
+
+            <label for="target_countries">Which country/countries do you want to study in?</label>
+            <input type="text" id="target_countries" name="target_countries">
+
+            <label>Have you taken any English test? If yes, what was your score?</label>
+            <div class="radio-group">
+                <label><input type="radio" name="english_test_taken" value="IELTS"> IELTS</label><br>
+                <label><input type="radio" name="english_test_taken" value="PTE"> PTE</label><br>
+                <label><input type="radio" name="english_test_taken" value="TOEFL"> TOEFL</label><br>
+                <label><input type="radio" name="english_test_taken" value="Duolingo"> Duolingo</label><br>
+                <label><input type="radio" name="english_test_taken" value="Medium of Instruction (MOI)"> Medium of Instruction (MOI)</label><br>
+                <label><input type="radio" name="english_test_taken" value="Other Test"> Other:</label>
+                <label><input type="radio" name="english_test_taken" value="None Taken"> None Taken</label>
+            </div>
+
+            <label for="english_test_score_willing">What score did you obtain? If none taken, would you be willing to take an English test if required?</label>
+            <input type="text" id="english_test_score_willing" name="english_test_score_willing">
+
+            <label for="budget_range">Budget range (tuition + living per year, in GBP or USD)</label>
+            <input type="text" id="budget_range" name="budget_range">
+
+            <label>When do you plan to start studying abroad?</label>
+            <div class="radio-group">
+                <label><input type="radio" name="target_start_date" value="January / February 2026"> January / February 2026</label><br>
+                <label><input type="radio" name="target_start_date" value="May / July 2026"> May / July 2026</label><br>
+                <label><input type="radio" name="target_start_date" value="September 2026"> September 2026</label><br>
+                <label><input type="radio" name="target_start_date" value="Later / Not sure yet"> Later / Not sure yet</label>
+            </div>
+
+            <label for="previous_application_visa">Have you applied anywhere before? If so, have you had a visa refused?</label>
+            <input type="text" id="previous_application_visa" name="previous_application_visa">
+
+
+            <div class="nav-buttons">
+                <button type="button" class="dark-button" onclick="prevPage(3)">&larr; Previous</button>
+                <button type="button" class="accent-button" onclick="nextPage(3)">Next Step &rarr;</button>
+            </div>
+        </fieldset>
+
+        <fieldset class="form-page hidden" id="page-4">
+            <legend>Step 4: Required Confidential Documents</legend>
+            <p class="upload-note">All files are stored securely and GDPR-compliant. Please ensure you have **two separate files** prepared.</p>
+            
+            <label for="transcript_file" class="upload-label">Transcripts (Academic Records)</label>
+            <input type="file" id="transcript_file" name="transcript_file" accept=".pdf,.jpg,.png" required>
+
+            <label for="passport_id_file" class="upload-label">Passport/ID (Photo Page or Government ID)</label>
+            <input type="file" id="passport_id_file" name="passport_id_file" accept=".pdf,.jpg,.png" required>
+
+            <hr style="margin: 20px 0;">
+            
+            <label for="data_processing_consent">
+                <input type="checkbox" id="data_processing_consent" name="data_processing_consent" value="Yes, I confirm" required>
+                **Yes, I confirm,** I consent to Pathfind Education collecting and processing my data and confirm my documents are accurate and belong to me.
+            </label>
+
+            <label for="marketing_consent" style="font-weight: 400; color: #333;">
+                <input type="checkbox" id="marketing_consent" name="marketing_consent" value="Yes, I consent">
+                (Optional marketing consent) Do you consent to receiving occasional emails about study abroad opportunities and updates?
+            </label>
+
+            <label for="additional_notes">Is there anything else you would like us to know?</label>
+            <textarea id="additional_notes" name="additional_notes" rows="3"></textarea>
+            
+            <label>Where did you hear about us?</label>
+            <div class="radio-group">
+                <label><input type="radio" name="referral_source" value="Google Search"> Google Search</label><br>
+                <label><input type="radio" name="referral_source" value="Facebook"> Facebook</label><br>
+                <label><input type="radio" name="referral_source" value="Tiktok"> Tiktok</label><br>
+                <label><input type="radio" name="referral_source" value="Whatsapp"> Whatsapp</label><br>
+                <label><input type="radio" name="referral_source" value="Family / Friends"> Family / Friends</label><br>
+                <label><input type="radio" name="referral_source" value="Other Referral"> Other:</label>
+            </div>
+            
+            <div class="nav-buttons">
+                <button type="button" class="dark-button" onclick="prevPage(4)">&larr; Previous</button>
+                <button type="submit" class="submit-button">Submit & Get Expert Advice</button>
+            </div>
+        </fieldset>
+
+    </form>
+</div>
+
+<script>
+    let currentPage = 1;
+    const totalPages = 4;
+
+    function updateFormVisibility() {
+        // Hide all pages
+        document.querySelectorAll('.form-page').forEach(page => {
+            page.classList.add('hidden');
+        });
+        // Show the current page
+        const currentPageElement = document.getElementById(`page-${currentPage}`);
+        if (currentPageElement) {
+            currentPageElement.classList.remove('hidden');
+        }
+
+        // Update progress indicator
+        document.querySelectorAll('.step').forEach((step, index) => {
+            step.classList.remove('active');
+            if (index + 1 <= currentPage) {
+                step.classList.add('active');
+            }
+        });
+    }
+
+    function nextPage(fromPage) {
+        // Basic validation check for required fields on the current page
+        const currentFieldset = document.getElementById(`page-${fromPage}`);
+        let isValid = true;
+        
+        // Find all required inputs within the current fieldset
+        currentFieldset.querySelectorAll('[required]').forEach(input => {
+            if (input.type === 'radio') {
+                // For radio buttons, check if at least one with the same name is checked
+                const radioName = input.name;
+                if (!document.querySelector(`input[name="${radioName}"]:checked`)) {
+                    isValid = false;
+                    // Highlight the area if necessary (optional: can get complex)
+                }
+            } else if (input.type === 'checkbox') {
+                // For required checkboxes (like the consent field)
+                if (!input.checked) {
+                    isValid = false;
+                    input.parentNode.style.backgroundColor = 'rgba(255, 0, 0, 0.1)'; // Highlight background
+                } else {
+                    input.parentNode.style.backgroundColor = 'transparent';
+                }
+            } else if (!input.value.trim()) {
+                // For text, email, tel, select, textarea
+                isValid = false;
+                input.style.borderColor = 'red';
+            } else {
+                input.style.borderColor = 'var(--color-light-gray)';
+            }
+        });
+
+        if (isValid && currentPage < totalPages) {
+            currentPage++;
+            updateFormVisibility();
+        } else if (!isValid) {
+            alert('Please complete all required fields on this step to proceed.');
+        }
+    }
+
+    function prevPage(fromPage) {
+        if (currentPage > 1) {
+            currentPage--;
+            updateFormVisibility();
+        }
+    }
+
+    // Initialize the form when the page loads
+    window.onload = updateFormVisibility;
+</script>
