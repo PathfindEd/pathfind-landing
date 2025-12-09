@@ -1,0 +1,23 @@
+# Landing Page Configuration
+title: Pathfind Education - Expert Study Abroad Guidance
+tagline: "Expert, cost-free guidance for study abroad."
+locale: "en-GB"
+
+# Site URL settings
+# NOTE: Your main site must use the root URL
+url: "https://www.pathfindeducation.com"
+baseurl: ""  
+
+# BUILD SETTINGS
+markdown: kramdown
+permalink: pretty
+
+# Plugins (Add any plugins required by the main site here)
+# - jekyll-sitemap
+
+# Defaults for pages (Consultation and Thank You)
+defaults:
+  - scope:
+      path: "" # Apply to all files/folders not covered by other defaults
+    values:
+      layout: "default"
