@@ -10,6 +10,14 @@ permalink: /consultation/
         Pathfind Education offers free, honest advice to help students apply to universities in the UK, USA, Australia, Canada, and New Zealand.
     </p>
 
+    <div class="form-summary">
+        <h3>What Happens Next?</h3>
+        <ul>
+            <li><strong>Free Service:</strong> Our guidance is 100% free for students.</li>
+            <li><strong>Fast Turnaround:</strong> We will review your academic profile and documents.</li>
+            <li><strong>Personalised Shortlist:</strong> Expect a tailored university shortlist and response within <strong>24 hours</strong> via WhatsApp.</li>
+        </ul>
+    </div>
     <form name="consultation" method="POST" action="https://consultation-handler.wild-morning-134b.workers.dev/" enctype="multipart/form-data">
         <input type="hidden" name="form-name" value="consultation">
         
@@ -107,9 +115,9 @@ permalink: /consultation/
 
             <label>When do you plan to start studying abroad? <span class="required-star">*</span></label>
             <div class="radio-group" id="start-date-group">
+                <label><input type="radio" name="target_start_date" value="May / July 2026" required> May / July 2026</label>
+                <label><input type="radio" name="target_start_date" value="Sept / Oct 2026" required> Sept / Oct 2026 (Main Intake)</label>
                 <label><input type="radio" name="target_start_date" value="Jan / Feb 2027" required> Jan / Feb 2027</label>
-                <label><input type="radio" name="target_start_date" value="May / July 2027" required> May / July 2027</label>
-                <label><input type="radio" name="target_start_date" value="Sept / Oct 2027" required> Sept / Oct 2027 (Main Intake)</label>
                 <label><input type="radio" name="target_start_date" value="Later / Not sure yet" required> Later / Not sure yet</label>
             </div>
 
@@ -129,7 +137,7 @@ permalink: /consultation/
         <fieldset class="form-page hidden" id="page-4">
             <legend>Step 4: Required Confidential Documents & Consent</legend>
             <p class="upload-note" style="color: var(--muted); font-size: 14px;">
-                All files are stored securely and GDPR-compliant. Please upload **PDF or high-quality JPG/PNG** files only.
+                All files are stored securely and GDPR-compliant. Please upload <strong>PDF or high-quality JPG/PNG</strong> files only.
             </p>
             
             <label for="transcript_file" class="upload-label">Academic Transcripts (Mark Sheets) <span class="required-star">*</span></label>
@@ -142,7 +150,7 @@ permalink: /consultation/
             
             <label for="data_processing_consent" id="consent-label">
                 <input type="checkbox" id="data_processing_consent" name="data_processing_consent" value="Yes, I confirm" required>
-                **I Confirm:** I consent to Pathfind Education collecting and processing my data and documents for the purpose of university application and assessment, as per the <a href="/privacy.html" target="_blank" style="color: var(--primary); font-weight: 700;">Privacy Policy</a>. <span class="required-star">*</span>
+                I consent to Pathfind Education collecting and processing my data and documents for the purpose of university application and assessment, as per the <a href="/privacy.html" target="_blank" style="color: var(--primary); font-weight: 700;"><strong>Privacy Policy</strong></a>. <span class="required-star">*</span>
             </label>
 
             <label for="marketing_consent" style="font-weight: 400; color: #333; margin-top: 15px; display: flex; align-items: flex-start;">
@@ -151,7 +159,7 @@ permalink: /consultation/
             </label>
 
             <label for="additional_notes">Is there anything else you would like us to know?</label>
-            <textarea id="additional_notes" name="additional_notes" rows="3" placeholder="E.g., I require a full scholarship, I have prior work experience, etc."></textarea>
+            <textarea id="additional_notes" name="additional_notes" rows="3" placeholder="E.g., I have prior work experience, I need accommodation assistance, etc."></textarea>
             
             <label>Where did you hear about us? <span class="required-star">*</span></label>
             <div class="radio-group" id="referral-group">
@@ -198,7 +206,11 @@ permalink: /consultation/
 
                 fieldset.querySelectorAll('[data-original-required]').forEach(input => {
                     if (isCurrent) {
-                        input.setAttribute('required', 'required');
+                        // The 'required' attribute is managed by handleConditionalInputs for optional-input fields
+                        // Here, we ensure the base required fields are active
+                        if (!input.classList.contains('optional-input')) {
+                           input.setAttribute('required', 'required');
+                        }
                     } else {
                         input.removeAttribute('required');
                     }
@@ -216,12 +228,14 @@ permalink: /consultation/
         }
 
         function handleConditionalInputs(fieldset) {
+            // 1. Reset all optional inputs (hide and disable)
             fieldset.querySelectorAll('.optional-input').forEach(input => {
                 input.classList.add('hidden');
                 input.setAttribute('disabled', 'disabled');
-                input.removeAttribute('required');
+                input.removeAttribute('required'); // Crucial for validation fix
             });
             
+            // 2. Handle 'Other Qualification' and 'Refusal Details'
             fieldset.querySelectorAll('input[type="radio"]:checked[data-show-input]').forEach(radio => {
                 const targetId = radio.getAttribute('data-show-input');
                 if (targetId && targetId !== 'false') {
@@ -229,24 +243,28 @@ permalink: /consultation/
                     if (targetInput) {
                         targetInput.classList.remove('hidden');
                         targetInput.removeAttribute('disabled');
-                        targetInput.setAttribute('required', 'required');
+                        targetInput.setAttribute('required', 'required'); // Force required when visible
                     }
                 }
             });
 
+            // 3. Handle English Test Score (The specific validation fix)
             const scoreLabel = document.getElementById('english_test_score_label');
             const scoreInput = document.getElementById('english_test_score');
             const checkedEnglishTest = fieldset.querySelector('input[name="english_test_taken"]:checked');
 
             if (scoreInput && scoreLabel) {
                 const showScore = checkedEnglishTest && checkedEnglishTest.getAttribute('data-show-score') === 'true';
+                
                 scoreLabel.classList.toggle('hidden', !showScore);
                 scoreInput.classList.toggle('hidden', !showScore);
                 scoreInput.setAttribute('disabled', !showScore);
+
                 if (showScore) {
-                    scoreInput.setAttribute('required', 'required');
+                    scoreInput.setAttribute('required', 'required'); // Force required when visible
                 } else {
-                    scoreInput.removeAttribute('required');
+                    scoreInput.removeAttribute('required'); // Remove required when hidden
+                    scoreInput.value = ''; // Clear value when hidden to prevent submission errors
                 }
             }
         }
@@ -255,21 +273,24 @@ permalink: /consultation/
             let isValid = true;
             let firstInvalidElement = null;
             
+            // Reset validation indicators
             fieldset.querySelectorAll('.radio-group, #consent-label').forEach(el => {
                 el.style.border = '';
                 el.style.backgroundColor = '';
             });
-            fieldset.querySelectorAll('input:not([type="radio"]):not([type="checkbox"]), textarea').forEach(input => {
+            fieldset.querySelectorAll('input:not([type="radio"]):not([type="checkbox"]), textarea, input[type="file"]').forEach(input => {
                 input.style.borderColor = '';
             });
 
             fieldset.querySelectorAll('[required]').forEach(input => {
+                // Skip validation for hidden or disabled fields (handled by handleConditionalInputs)
                 if (input.classList.contains('hidden') || input.disabled) return;
 
                 let isInputValid = true;
 
                 if (input.type === 'radio') {
                     const radioName = input.name;
+                    // Only check validation for the first radio button in a named group
                     if (fieldset.querySelector(`input[name="${radioName}"]`) !== input) return; 
                     
                     if (!fieldset.querySelector(`input[name="${radioName}"]:checked`)) {
@@ -283,6 +304,7 @@ permalink: /consultation/
                     isValid = false;
                     if (!firstInvalidElement) firstInvalidElement = input;
 
+                    // Apply visual error state
                     if (input.type === 'checkbox' && input.id === 'data_processing_consent') {
                         const consentLabel = document.getElementById('consent-label');
                         consentLabel.style.backgroundColor = 'rgba(255, 0, 0, 0.1)';
@@ -315,6 +337,8 @@ permalink: /consultation/
             return isValid;
         }
 
+        // --- Event Listeners ---
+
         form.addEventListener('click', function(event) {
             const target = event.target;
             const currentFieldset = fieldsets[currentPage - 1];
@@ -340,17 +364,16 @@ permalink: /consultation/
 
         form.addEventListener('change', function(event) {
             const target = event.target;
+            
+            // Check for conditional inputs (e.g., test score or other text fields)
             if (target.type === 'radio' && (target.hasAttribute('data-show-input') || target.hasAttribute('data-show-score'))) {
                 handleConditionalInputs(fieldsets[currentPage - 1]);
             }
+            // Clear validation borders on radio/checkbox groups on change
             if (target.type === 'radio' && target.closest('.radio-group')) {
                 const radioGroup = target.closest('.radio-group');
                 radioGroup.style.border = '';
             }
-        });
-
-        form.addEventListener('change', function(event) {
-            const target = event.target;
             if (target.id === 'data_processing_consent' && target.checked) {
                 const consentLabel = document.getElementById('consent-label');
                 consentLabel.style.backgroundColor = '';
@@ -370,6 +393,7 @@ permalink: /consultation/
             }
         });
 
+        // Initial setup
         fieldsets.forEach(fieldset => {
             fieldset.querySelectorAll('[required]').forEach(input => {
                 input.setAttribute('data-original-required', 'true');
