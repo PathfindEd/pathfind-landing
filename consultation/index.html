@@ -1,181 +1,8 @@
----
-layout: default
-title: Personalised Study Abroad Assessment
-permalink: /consultation/
----
-
-<div class="form-container">
-    <h1 class="form-header-title">Personalised Study Abroad Assessment</h1>
-    <p class="form-header-tagline">
-        Pathfind Education offers free, honest advice to help students apply to universities in the UK, USA, Australia, Canada, and Europe.
-    </p>
-
-    <form name="consultation" method="POST" action="https://consultation-handler.wild-morning-134b.workers.dev/" enctype="multipart/form-data">
-        
-        <div id="progress-indicator">
-            <span class="step active" id="step-1">1</span>
-            <span class="step" id="step-2">2</span>
-            <span class="step" id="step-3">3</span>
-            <span class="step" id="step-4">4</span>
-        </div>
-        
-        <fieldset class="form-page" id="page-1">
-            <legend>Step 1: Personal Contact Details</legend>
-            
-            <label for="email">Email <span style="color:red">*</span></label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="full_name">Full Name <span style="color:red">*</span></label>
-            <input type="text" id="full_name" name="full_name" required>
-
-            <label for="whatsapp_number">Whatsapp number (with country code) <span style="color:red">*</span></label>
-            <input type="tel" id="whatsapp_number" name="whatsapp_number" required>
-            
-            <label for="date_of_birth">Date of Birth <span style="color:red">*</span></label>
-            <input type="date" id="date_of_birth" name="date_of_birth" required>
-
-            <label for="city_country">Current City & Country <span style="color:red">*</span></label>
-            <input type="text" id="city_country" name="city_country" required>
-
-            <div class="nav-buttons" style="justify-content: flex-end;">
-                <button type="button" class="accent-button" onclick="nextPage(1)">Next Step &rarr;</button>
-            </div>
-        </fieldset>
-
-        <fieldset class="form-page hidden" id="page-2">
-            <legend>Step 2: Academic Background</legend>
-            
-            <label>What is the highest qualification you have completed? <span style="color:red">*</span></label>
-            <div class="radio-group" id="qual-group">
-                <label><input type="radio" name="highest_qualification" value="O Levels / iGCSE/ 10th Grade" required> O Levels / iGCSE/ 10th Grade</label><br>
-                <label><input type="radio" name="highest_qualification" value="A Levels / 12th Grade" required> A Levels / 12th Grade - FA / FSc / ICS / ICom</label><br>
-                <label><input type="radio" name="highest_qualification" value="Bachelor’s Degree" required> Bachelor’s Degree</label><br>
-                <label><input type="radio" name="highest_qualification" value="Master’s Degree" required> Master’s Degree</label><br>
-                <label>
-                    <input type="radio" name="highest_qualification" value="Other Qualification" required 
-                        onchange="document.getElementById('other_qual_input').style.display = this.checked ? 'block' : 'none';">
-                    Other:
-                </label>
-            </div>
-            <input type="text" id="other_qual_input" name="other_qualification_details" placeholder="Please specify your qualification" style="display:none; margin-top: 5px;">
-
-            <label for="full_course_name">What was the full course name? <span style="color:red">*</span></label>
-            <input type="text" id="full_course_name" name="full_course_name" required>
-
-            <label for="completion_details">Year completed and grade achieved or predicted? <span style="color:red">*</span></label>
-            <input type="text" id="completion_details" name="completion_details" required>
-
-            <div class="nav-buttons">
-                <button type="button" class="dark-button" onclick="prevPage(2)">&larr; Previous</button>
-                <button type="button" class="accent-button" onclick="nextPage(2)">Next Step &rarr;</button>
-            </div>
-        </fieldset>
-        
-        <fieldset class="form-page hidden" id="page-3">
-            <legend>Step 3: Study Preferences</legend>
-            
-            <label>Which course level do you plan to study? <span style="color:red">*</span></label>
-            <div class="radio-group" id="course-group">
-                <label><input type="radio" name="course_level" value="Foundation / Pathway" required> Foundation / Pathway</label><br>
-                <label><input type="radio" name="course_level" value="Undergraduate (Bachelor’s)" required> Undergraduate (Bachelor’s)</label><br>
-                <label><input type="radio" name="course_level" value="Postgraduate (Master’s)" required> Postgraduate (Master’s)</label><br>
-                <label><input type="radio" name="course_level" value="PhD / Research" required> PhD / Research</label><br>
-                <label><input type="radio" name="course_level" value="Other Course Level" required> Other:</label>
-            </div>
-
-            <label for="target_subject">Subject you wish to study? <span style="color:red">*</span></label>
-            <input type="text" id="target_subject" name="target_subject" required>
-
-            <label for="target_countries">Which country/countries do you want to study in? <span style="color:red">*</span></label>
-            <input type="text" id="target_countries" name="target_countries" required>
-
-            <label>Have you taken any English test? If yes, what was your score? <span style="color:red">*</span></label>
-            <div class="radio-group" id="english-test-group">
-                <label><input type="radio" name="english_test_taken" value="IELTS" required> IELTS</label><br>
-                <label><input type="radio" name="english_test_taken" value="PTE" required> PTE</label><br>
-                <label><input type="radio" name="english_test_taken" value="TOEFL" required> TOEFL</label><br>
-                <label><input type="radio" name="english_test_taken" value="Duolingo" required> Duolingo</label><br>
-                <label><input type="radio" name="english_test_taken" value="Medium of Instruction (MOI)" required> Medium of Instruction (MOI)</label><br>
-                <label>
-                    <input type="radio" name="english_test_taken" value="Other Test" required 
-                        onchange="document.getElementById('other_test_input').style.display = this.checked ? 'block' : 'none';">
-                    Other:
-                </label>
-                <label><input type="radio" name="english_test_taken" value="None Taken" required> None Taken</label>
-            </div>
-            <input type="text" id="other_test_input" name="other_test_details" placeholder="e.g. Cambridge, Michigan Test" style="display:none; margin-top: 5px;">
-
-            <label for="english_test_score_willing">What score did you obtain? If none taken, would you be willing to take an English test if required? <span style="color:red">*</span></label>
-            <input type="text" id="english_test_score_willing" name="english_test_score_willing" required>
-
-            <label for="budget_range">Budget range (tuition + living per year, in GBP or USD) <span style="color:red">*</span></label>
-            <input type="text" id="budget_range" name="budget_range" required>
-
-            <label>When do you plan to start studying abroad? <span style="color:red">*</span></label>
-            <div class="radio-group" id="start-date-group">
-                <label><input type="radio" name="target_start_date" value="January / February 2026" required> January / February 2026</label><br>
-                <label><input type="radio" name="target_start_date" value="May / July 2026" required> May / July 2026</label><br>
-                <label><input type="radio" name="target_start_date" value="September 2026" required> September 2026</label><br>
-                <label><input type="radio" name="target_start_date" value="Later / Not sure yet" required> Later / Not sure yet</label>
-            </div>
-
-            <label for="previous_application_visa">Have you applied anywhere before? If so, have you had a visa refused? <span style="color:red">*</span></label>
-            <input type="text" id="previous_application_visa" name="previous_application_visa" required>
-
-
-            <div class="nav-buttons">
-                <button type="button" class="dark-button" onclick="prevPage(3)">&larr; Previous</button>
-                <button type="button" class="accent-button" onclick="nextPage(3)">Next Step &rarr;</button>
-            </div>
-        </fieldset>
-
-        <fieldset class="form-page hidden" id="page-4">
-            <legend>Step 4: Required Confidential Documents</legend>
-            <p class="upload-note" style="color: var(--muted); font-size: 14px;">All files are stored securely and GDPR-compliant. Please ensure you have **two separate files** prepared.</p>
-            
-            <label for="transcript_file" class="upload-label">Transcripts (Academic Records) <span style="color:red">*</span></label>
-            <input type="file" id="transcript_file" name="transcript_file" accept=".pdf,.jpg,.png" required>
-
-            <label for="passport_id_file" class="upload-label">Passport/ID (Photo Page or Government ID) <span style="color:red">*</span></label>
-            <input type="file" id="passport_id_file" name="passport_id_file" accept=".pdf,.jpg,.png" required>
-
-            <hr style="margin: 20px 0;">
-            
-            <label for="data_processing_consent" id="consent-label" style="font-weight: 400; color: #333;">
-                <input type="checkbox" id="data_processing_consent" name="data_processing_consent" value="Yes, I confirm" required>
-                **Yes, I confirm,** I consent to Pathfind Education collecting and processing my data and confirm my documents are accurate and belong to me. <span style="color:red">*</span>
-            </label>
-
-            <label for="marketing_consent" style="font-weight: 400; color: #333; margin-top: 15px; display: flex; align-items: flex-start;">
-                <input type="checkbox" id="marketing_consent" name="marketing_consent" value="Yes, I consent">
-                (Optional marketing consent) Do you consent to receiving occasional emails about study abroad opportunities and updates?
-            </label>
-
-            <label for="additional_notes">Is there anything else you would like us to know?</label>
-            <textarea id="additional_notes" name="additional_notes" rows="3"></textarea>
-            
-            <label>Where did you hear about us? <span style="color:red">*</span></label>
-            <div class="radio-group" id="referral-group">
-                <label><input type="radio" name="referral_source" value="Google Search" required> Google Search</label><br>
-                <label><input type="radio" name="referral_source" value="Facebook" required> Facebook</label><br>
-                <label><input type="radio" name="referral_source" value="Tiktok" required> Tiktok</label><br>
-                <label><input type="radio" name="referral_source" value="Whatsapp" required> Whatsapp</label><br>
-                <label><input type="radio" name="referral_source" value="Family / Friends" required> Family / Friends</label><br>
-                <label><input type="radio" name="referral_source" value="Other Referral" required> Other:</label>
-            </div>
-            
-            <div class="nav-buttons">
-                <button type="button" class="dark-button" onclick="prevPage(4)">&larr; Previous</button>
-                <button type="button" class="submit-button" onclick="validateAndSubmit()">Submit & Get Expert Advice</button>
-            </div>
-        </fieldset>
-
-    </form>
-</div>
-
 <script>
     let currentPage = 1;
     const totalPages = 4;
+    const form = document.querySelector('form[name="consultation"]');
+    const submitButton = document.getElementById('final-submit-button');
 
     function updateFormVisibility() {
         // Hide all pages
@@ -195,7 +22,8 @@ permalink: /consultation/
                 step.classList.add('active');
             }
         });
-        // Scroll to top of form when page changes
+        
+        // Scroll to top of form ONLY when changing pages, NOT on submit
         if(document.querySelector('.form-container')) {
             document.querySelector('.form-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
@@ -203,21 +31,40 @@ permalink: /consultation/
 
     function nextPage(fromPage) {
         const currentFieldset = document.getElementById(`page-${fromPage}`);
+        let isValid = validateFieldset(currentFieldset); // Use helper function
+
+        if (isValid && currentPage < totalPages) {
+            currentPage++;
+            updateFormVisibility();
+        } else if (!isValid) {
+            scrollToFirstError(currentFieldset);
+        }
+    }
+
+    function prevPage(fromPage) {
+        if (currentPage > 1) {
+            currentPage--;
+            updateFormVisibility();
+        }
+    }
+
+    // Helper function to validate a specific section (reused for Next and Submit)
+    function validateFieldset(fieldset) {
         let isValid = true;
         let firstInvalidInput = null;
-        
+
         // Clear previous error states
-        currentFieldset.querySelectorAll('input, select, textarea').forEach(input => {
+        fieldset.querySelectorAll('input, select, textarea').forEach(input => {
             input.style.borderColor = 'var(--light-gray)'; 
         });
-        currentFieldset.querySelectorAll('.radio-group, #consent-label').forEach(el => {
+        fieldset.querySelectorAll('.radio-group, #consent-label').forEach(el => {
             el.style.border = 'none';
             el.style.padding = el.id === 'consent-label' ? '12px' : '10px'; 
             el.style.backgroundColor = 'transparent';
         });
-        
-        // Validate all required inputs
-        currentFieldset.querySelectorAll('[required]').forEach(input => {
+
+        // Run checks
+        fieldset.querySelectorAll('[required]').forEach(input => {
             let isInputValid = true;
             
             if (input.type === 'radio') {
@@ -239,7 +86,6 @@ permalink: /consultation/
 
             if (!isInputValid) {
                 isValid = false;
-                
                 // Apply visual error state
                 if (input.type === 'checkbox' && input.id === 'data_processing_consent') {
                     const consentLabel = document.getElementById('consent-label');
@@ -257,39 +103,57 @@ permalink: /consultation/
                     input.style.borderColor = 'red';
                     if (!firstInvalidInput) firstInvalidInput = input;
                 }
+                // Tag the input so we can find it later
+                input.dataset.invalid = "true";
+            } else {
+                 delete input.dataset.invalid;
             }
         });
+        
+        return isValid;
+    }
 
-        if (isValid && currentPage < totalPages) {
-            currentPage++;
-            updateFormVisibility();
-        } else if (!isValid) {
-            if (firstInvalidInput) {
-                firstInvalidInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    function scrollToFirstError(fieldset) {
+        // Find first element we marked as invalid
+        const firstInvalid = fieldset.querySelector('[data-invalid="true"]') || fieldset.querySelector(':invalid');
+        // Special handling for the consent label or radio groups which might be the "parent" of the input
+        if (firstInvalid) {
+            // Check if it's the consent checkbox, scroll to its label instead
+            if (firstInvalid.id === 'data_processing_consent') {
+                 document.getElementById('consent-label').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } 
+            // Check if it's a radio button, scroll to its group
+            else if (firstInvalid.type === 'radio') {
+                 firstInvalid.closest('.radio-group').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            else {
+                 firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         }
     }
 
-    function prevPage(fromPage) {
-        if (currentPage > 1) {
-            currentPage--;
-            updateFormVisibility();
-        }
-    }
-
-    function validateAndSubmit() {
-        // Run validation for the final page (Page 4)
-        nextPage(4); 
+    // --- NEW SUBMISSION HANDLER ---
+    form.addEventListener('submit', function(event) {
+        const currentFieldset = document.getElementById('page-4');
         
-        const form = document.querySelector('form[name="consultation"]');
+        // 1. Run your custom validation (for red borders)
+        const isCustomValid = validateFieldset(currentFieldset);
         
-        // checkValidity() will use the 'required' attributes to check everything
-        // We only submit if validation passes AND we are on the final page (to prevent accidental submission)
-        if (form.checkValidity() && currentPage === totalPages) {
-            form.submit();
-        }
-    }
+        // 2. Run browser native validation
+        const isNativeValid = form.checkValidity();
 
-    // Initialize the form when the page loads
+        if (isCustomValid && isNativeValid) {
+            // SUCCESS: Disable button to prevent double-submit
+            submitButton.disabled = true;
+            submitButton.textContent = 'Submitting... Please wait.';
+            submitButton.classList.add('submitting');
+            // Allow the form to submit naturally to the Worker URL
+        } else {
+            // ERROR: Stop submission and show errors
+            event.preventDefault();
+            scrollToFirstError(currentFieldset);
+        }
+    });
+
     window.onload = updateFormVisibility;
 </script>
