@@ -1,45 +1,45 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
-  
-  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+  
+  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap">
-  
-  <link rel="stylesheet" href="/assets/css/style.css"> 
-  </head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap">
+  
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css"> 
+</head>
 <body>
 
-  <header>
-    <div class="header-container">
-      <a href="/" class="brand-logo">
-        <img src="https://i.imgur.com/JSe2Jgf.png" alt="Logo">
-        <span>Pathfind Blog</span>
-      </a>
-      <a href="https://www.pathfindeducation.com" class="nav-cta">
-        &larr; Back to Main Site
-      </a>
-    </div>
-  </header>
+  <header>
+    <div class="header-container">
+      <a href="{{ site.baseurl }}/" class="brand-logo">
+        <img src="https://i.imgur.com/JSe2Jgf.png" alt="Logo">
+        <span>Pathfind Blog</span>
+      </a>
+      <a href="https://www.pathfindeducation.com" class="nav-cta">
+        &larr; Back to Main Site
+      </a>
+    </div>
+  </header>
 
-  <main>
-    {{ content }}
-  </main>
+  <main>
+    {{ content }}
+  </main>
 
-  <footer>
-    <p style="color: var(--muted); font-size: 0.9em;">
-      Copyright &copy; {{ site.time | date: "%Y" }} Pathfind Education Ltd.
-    </p>
-    <div style="margin-top: 20px;">
-      <p>Ready to apply to universities abroad for free?</p>
-      <a href="https://link.pathfindeducation.com/apply" class="footer-btn">
-        Start Your Free Application
-      </a>
-    </div>
-  </footer>
+  <footer>
+    <p style="color: var(--muted); font-size: 0.9em;">
+      Copyright &copy; {{ site.time | date: "%Y" }} Pathfind Education Ltd.
+    </p>
+    <div style="margin-top: 20px;">
+      <p>Ready to apply to universities abroad for free?</p>
+      <a href="https://link.pathfindeducation.com/apply" class="footer-btn">
+        Start Your Free Application
+      </a>
+    </div>
+  </footer>
 
 </body>
 </html>
