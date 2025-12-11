@@ -140,10 +140,18 @@ permalink: /consultation/
 
             <hr style="margin: 20px 0;">
             
-            <label for="data_processing_consent" id="consent-label">
-                <input type="checkbox" id="data_processing_consent" name="data_processing_consent" value="Yes, I confirm" required>
-                **I Confirm:** I consent to Pathfind Education collecting and processing my data and documents for the purpose of university application and assessment, as per the <a href="/privacy.html" target="_blank" style="color: var(--primary); font-weight: 700;">Privacy Policy</a>. <span class="required-star">*</span>
+            <!-- START CONSENT RESTRUCTURE AND BOLD FIX -->
+            <label for="data_processing_consent" id="consent-label" style="display: block;">
+                <!-- Explanation text moved above the checkbox -->
+                I consent to Pathfind Education collecting and processing my data and documents for the purpose of university application and assessment, as per the <a href="/privacy.html" target="_blank" style="color: var(--primary); font-weight: 700;">Privacy Policy</a>. <span class="required-star">*</span>
+                
+                <div style="display: flex; align-items: center; margin-top: 8px;">
+                    <input type="checkbox" id="data_processing_consent" name="data_processing_consent" value="Yes, I confirm" required>
+                    <!-- **I Confirm:** changed to <strong>I Confirm</strong> -->
+                    <strong style="margin-left: 8px;">I Confirm</strong>
+                </div>
             </label>
+            <!-- END CONSENT RESTRUCTURE AND BOLD FIX -->
 
             <label for="marketing_consent" style="font-weight: 400; color: #333; margin-top: 15px; display: flex; align-items: flex-start;">
                 <input type="checkbox" id="marketing_consent" name="marketing_consent" value="Yes, I consent">
@@ -151,7 +159,8 @@ permalink: /consultation/
             </label>
 
             <label for="additional_notes">Is there anything else you would like us to know?</label>
-            <textarea id="additional_notes" name="additional_notes" rows="3" placeholder="E.g., I require a full scholarship, I have prior work experience, etc."></textarea>
+            <!-- Placeholder updated to remove "full scholarship" -->
+            <textarea id="additional_notes" name="additional_notes" rows="3" placeholder="E.g., I need help with accommodation, I have prior work experience, etc."></textarea>
             
             <label>Where did you hear about us? <span class="required-star">*</span></label>
             <div class="radio-group" id="referral-group">
@@ -197,9 +206,14 @@ permalink: /consultation/
                 fieldset.classList.toggle('hidden', !isCurrent);
 
                 fieldset.querySelectorAll('[data-original-required]').forEach(input => {
+                    // Only apply 'required' to inputs in the current, active fieldset.
                     if (isCurrent) {
-                        input.setAttribute('required', 'required');
+                        // Restore original required status unless it is managed by conditional logic (like english_test_score)
+                        if (!input.classList.contains('optional-input')) {
+                            input.setAttribute('required', 'required');
+                        }
                     } else {
+                        // Remove required status from fields in hidden pages.
                         input.removeAttribute('required');
                     }
                 });
@@ -216,12 +230,14 @@ permalink: /consultation/
         }
 
         function handleConditionalInputs(fieldset) {
+            // 1. Reset all optional/conditional inputs
             fieldset.querySelectorAll('.optional-input').forEach(input => {
                 input.classList.add('hidden');
                 input.setAttribute('disabled', 'disabled');
-                input.removeAttribute('required');
+                input.removeAttribute('required'); // Crucial: Remove required when hidden/disabled
             });
             
+            // 2. Handle 'Other' Text Inputs
             fieldset.querySelectorAll('input[type="radio"]:checked[data-show-input]').forEach(radio => {
                 const targetId = radio.getAttribute('data-show-input');
                 if (targetId && targetId !== 'false') {
@@ -234,15 +250,19 @@ permalink: /consultation/
                 }
             });
 
+            // 3. Handle English Test Score Input (Page 3)
             const scoreLabel = document.getElementById('english_test_score_label');
             const scoreInput = document.getElementById('english_test_score');
             const checkedEnglishTest = fieldset.querySelector('input[name="english_test_taken"]:checked');
 
             if (scoreInput && scoreLabel) {
                 const showScore = checkedEnglishTest && checkedEnglishTest.getAttribute('data-show-score') === 'true';
+                
                 scoreLabel.classList.toggle('hidden', !showScore);
                 scoreInput.classList.toggle('hidden', !showScore);
                 scoreInput.setAttribute('disabled', !showScore);
+                
+                // This logic ensures the required attribute is enforced ONLY when visible. (Fix for user issue)
                 if (showScore) {
                     scoreInput.setAttribute('required', 'required');
                 } else {
@@ -255,6 +275,7 @@ permalink: /consultation/
             let isValid = true;
             let firstInvalidElement = null;
             
+            // Clear previous error styles
             fieldset.querySelectorAll('.radio-group, #consent-label').forEach(el => {
                 el.style.border = '';
                 el.style.backgroundColor = '';
@@ -264,16 +285,22 @@ permalink: /consultation/
             });
 
             fieldset.querySelectorAll('[required]').forEach(input => {
+                // Skip validation for hidden or disabled inputs, even if they have the 'required' attribute (conditional fields)
                 if (input.classList.contains('hidden') || input.disabled) return;
 
                 let isInputValid = true;
 
                 if (input.type === 'radio') {
                     const radioName = input.name;
+                    // Only check validation for the first radio input of a group (to prevent redundant checks)
                     if (fieldset.querySelector(`input[name="${radioName}"]`) !== input) return; 
                     
                     if (!fieldset.querySelector(`input[name="${radioName}"]:checked`)) {
                         isInputValid = false;
+                    }
+                } else if (input.type === 'checkbox') {
+                    if (!input.checked) {
+                         isInputValid = false;
                     }
                 } else if (!input.checkValidity()) {
                     isInputValid = false;
@@ -284,29 +311,34 @@ permalink: /consultation/
                     if (!firstInvalidElement) firstInvalidElement = input;
 
                     if (input.type === 'checkbox' && input.id === 'data_processing_consent') {
+                        // Special handling for the consent label wrapper
                         const consentLabel = document.getElementById('consent-label');
                         consentLabel.style.backgroundColor = 'rgba(255, 0, 0, 0.1)';
                         consentLabel.style.border = '1px solid red';
                     } else if (input.type === 'radio') {
+                        // Special handling for radio groups
                         const radioGroup = input.closest('.radio-group');
                         if (radioGroup) {
                             radioGroup.style.border = '1px solid red';
                         }
                     } else {
+                        // Default input styling
                         input.style.borderColor = 'red';
                     }
                 }
             });
             
             if (firstInvalidElement) {
+                // Scroll to the first invalid element or its containing group/label
                 let scrollTarget = firstInvalidElement;
                 if (firstInvalidElement.type === 'radio') {
                     scrollTarget = firstInvalidElement.closest('.radio-group');
-                } else if (firstInvalidElement.type === 'checkbox') {
+                } else if (firstInvalidElement.id === 'data_processing_consent') {
                     scrollTarget = document.getElementById('consent-label');
                 }
                 if (scrollTarget) scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
+                // Use native reportValidity for visual feedback on standard inputs
                 if (firstInvalidElement.type !== 'radio' && firstInvalidElement.reportValidity) {
                     firstInvalidElement.reportValidity();
                 }
@@ -314,6 +346,8 @@ permalink: /consultation/
             
             return isValid;
         }
+
+        // --- Event Listeners ---
 
         form.addEventListener('click', function(event) {
             const target = event.target;
@@ -338,20 +372,21 @@ permalink: /consultation/
             }
         });
 
+        // Handle radio/checkbox group changes to trigger conditional inputs display/validation state update
         form.addEventListener('change', function(event) {
             const target = event.target;
+            const currentFieldset = fieldsets[currentPage - 1];
+
             if (target.type === 'radio' && (target.hasAttribute('data-show-input') || target.hasAttribute('data-show-score'))) {
-                handleConditionalInputs(fieldsets[currentPage - 1]);
+                handleConditionalInputs(currentFieldset);
             }
+            
+            // Clear error styling on change
             if (target.type === 'radio' && target.closest('.radio-group')) {
                 const radioGroup = target.closest('.radio-group');
                 radioGroup.style.border = '';
             }
-        });
-
-        form.addEventListener('change', function(event) {
-            const target = event.target;
-            if (target.id === 'data_processing_consent' && target.checked) {
+             if (target.id === 'data_processing_consent' && target.checked) {
                 const consentLabel = document.getElementById('consent-label');
                 consentLabel.style.backgroundColor = '';
                 consentLabel.style.border = '';
@@ -370,6 +405,7 @@ permalink: /consultation/
             }
         });
 
+        // Initial setup: Mark all required inputs for later restoration and show first page
         fieldsets.forEach(fieldset => {
             fieldset.querySelectorAll('[required]').forEach(input => {
                 input.setAttribute('data-original-required', 'true');
