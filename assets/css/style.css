@@ -1,3 +1,12 @@
+/* --- GLOBAL BRAND VARIABLES (REQUIRED FOR STYLES TO FUNCTION) --- */
+:root {
+    /* Pathfind Education Official Brand Variables */
+    --primary: #112649; /* Deep Navy Blue */
+    --accent: #f5a623; /* Official Gold/Orange accent */
+    --muted: #6b7280; /* Official Neutral Grey */
+    --border-color: #e5e7eb; /* Reliable light grey for borders */
+}
+
 /* --- REVISED FORM SPECIFIC STYLES (On-Brand) --- */
 .form-container { 
     max-width: 800px; /* Increased max width slightly for better spacing */
@@ -19,7 +28,7 @@
     text-align: center; 
     margin-bottom: 40px; 
     font-size: 16px; 
-    border-bottom: 1px solid var(--border-color, #e5e7eb); /* Added separation line */
+    border-bottom: 1px solid var(--border-color); /* Added separation line */
     padding-bottom: 25px;
 }
 .form-page { 
@@ -48,7 +57,7 @@
     width: 100%; 
     padding: 12px 16px; /* Slightly more horizontal padding */
     margin-bottom: 0; /* Cleared margin to prevent double spacing */
-    border: 1px solid var(--border-color, #e5e7eb); /* Consistent border color */
+    border: 1px solid var(--border-color); /* Consistent border color */
     border-radius: 8px; /* Slightly rounder corners */
     font-size: 16px; 
     box-sizing: border-box; 
@@ -65,7 +74,7 @@
 .radio-group { 
     background: #fafafa; /* Light grey background */
     padding: 15px; /* Increased padding */
-    border: 1px solid var(--border-color, #e5e7eb); 
+    border: 1px solid var(--border-color); 
     border-radius: 8px; 
     margin-bottom: 10px; 
     line-height: 1.5; 
@@ -89,7 +98,7 @@
 #consent-label { 
     display: block; 
     padding: 12px; 
-    border: 1px solid var(--border-color, #e5e7eb); 
+    border: 1px solid var(--border-color); 
     border-radius: 8px; 
     margin-top: 20px; 
     cursor: pointer; 
@@ -103,7 +112,7 @@
     justify-content: space-between; 
     margin-top: 40px; /* Increased margin */
     padding-top: 20px; 
-    border-top: 1px solid var(--border-color, #e5e7eb); /* Consistent border color */
+    border-top: 1px solid var(--border-color); /* Consistent border color */
 }
 
 /* Primary Button (Next/Submit) - Accent Orange */
@@ -118,7 +127,7 @@
     transition: background-color 0.2s, transform 0.2s; 
 }
 .accent-button:hover, .submit-button:hover { 
-    background-color: #e0961f; /* Darker orange on hover */
+    background-color: #e0961f; /* Darker orange on hover (using a derived shade) */
     transform: translateY(-1px);
     opacity: 1; /* Override opacity property */
 }
@@ -165,7 +174,7 @@
     left: 0;
     right: 0;
     height: 2px;
-    background: var(--border-color, #e5e7eb); /* Light line */
+    background: var(--border-color); /* Light line */
     z-index: 1;
     transform: translateY(-50%);
 }
@@ -175,7 +184,7 @@
     line-height: 32px;
     border-radius: 50%; 
     background: #fff; 
-    border: 2px solid var(--border-color, #e5e7eb); 
+    border: 2px solid var(--border-color); 
     color: var(--muted); 
     display: flex; 
     align-items: center; 
