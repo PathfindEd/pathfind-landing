@@ -38,7 +38,7 @@ permalink: /consultation/
             <input type="text" id="city_country" name="city_country" required>
 
             <div class="nav-buttons" style="justify-content: flex-end;">
-                <button type="button" class="accent-button" onclick="nextPage(1)">Next Step &rarr;</button>
+                <button type="button" class="accent-button">Next Step &rarr;</button>
             </div>
         </fieldset>
 
@@ -66,8 +66,8 @@ permalink: /consultation/
             <input type="text" id="completion_details" name="completion_details" required>
 
             <div class="nav-buttons">
-                <button type="button" class="dark-button" onclick="prevPage(2)">&larr; Previous</button>
-                <button type="button" class="accent-button" onclick="nextPage(2)">Next Step &rarr;</button>
+                <button type="button" class="dark-button">&larr; Previous</button>
+                <button type="button" class="accent-button">Next Step &rarr;</button>
             </div>
         </fieldset>
         
@@ -124,8 +124,8 @@ permalink: /consultation/
 
 
             <div class="nav-buttons">
-                <button type="button" class="dark-button" onclick="prevPage(3)">&larr; Previous</button>
-                <button type="button" class="accent-button" onclick="nextPage(3)">Next Step &rarr;</button>
+                <button type="button" class="dark-button">&larr; Previous</button>
+                <button type="button" class="accent-button">Next Step &rarr;</button>
             </div>
         </fieldset>
 
@@ -165,7 +165,7 @@ permalink: /consultation/
             </div>
             
             <div class="nav-buttons">
-                <button type="button" class="dark-button" onclick="prevPage(4)">&larr; Previous</button>
+                <button type="button" class="dark-button">&larr; Previous</button>
                 <button type="submit" class="submit-button" id="final-submit-button">Submit & Get Expert Advice</button>
             </div>
         </fieldset>
@@ -174,172 +174,151 @@ permalink: /consultation/
 </div>
 
 <script>
-    // This wrapper ensures the script only runs after the entire HTML document is loaded (fixes the null error).
     document.addEventListener('DOMContentLoaded', function() {
-        // --- Variable Definitions ---
-        let currentPage = 1;
-        const totalPages = 4;
         const form = document.querySelector('form[name="consultation"]');
         const submitButton = document.getElementById('final-submit-button');
-        
-        // CRITICAL CHECK: If the form or button is still missing, stop.
-        if (!form || !submitButton) {
-            console.error("Initialization Error: Form or final submit button not found in the DOM.");
-            return; 
+        const fieldsets = document.querySelectorAll('.form-page');
+        const steps = document.querySelectorAll('.step');
+        let currentPage = 1;
+
+        if (!form || fieldsets.length === 0 || steps.length === 0) {
+            console.error("Form initialization failed: Missing elements.");
+            return;
         }
 
-        // --- Function Definitions ---
+        // --- Helper Functions ---
 
-        function updateFormVisibility() {
-            // Hide all pages
-            document.querySelectorAll('.form-page').forEach(page => {
-                page.classList.add('hidden');
+        function updateFormDisplay() {
+            // 1. Update Fieldset Visibility
+            fieldsets.forEach((fieldset, index) => {
+                fieldset.classList.toggle('hidden', index + 1 !== currentPage);
             });
-            // Show the current page
-            const currentPageElement = document.getElementById(`page-${currentPage}`);
-            if (currentPageElement) {
-                currentPageElement.classList.remove('hidden');
-            }
 
-            // Update progress indicator
-            document.querySelectorAll('.step').forEach((step, index) => {
-                step.classList.remove('active');
-                if (index + 1 <= currentPage) {
-                    step.classList.add('active');
-                }
+            // 2. Update Progress Indicator
+            steps.forEach((step, index) => {
+                step.classList.toggle('active', index + 1 <= currentPage);
             });
-            
-            // Scroll to top of form ONLY when changing pages
-            if(document.querySelector('.form-container')) {
-                document.querySelector('.form-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // 3. Scroll to the top of the form container
+            const formContainer = document.querySelector('.form-container');
+            if (formContainer) {
+                formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         }
 
-        function validateFieldset(fieldset) {
+        function validateCurrentPage(fieldset) {
             let isValid = true;
-
-            // Clear previous error states
-            fieldset.querySelectorAll('input, select, textarea').forEach(input => {
-                input.style.borderColor = 'var(--light-gray)'; 
-            });
+            let firstInvalid = null;
+            
+            // Clear previous custom error states (for radio/checkbox/groups)
             fieldset.querySelectorAll('.radio-group, #consent-label').forEach(el => {
-                el.style.border = 'none';
-                el.style.padding = el.id === 'consent-label' ? '12px' : '10px'; 
-                el.style.backgroundColor = 'transparent';
+                el.style.border = '';
+                el.style.backgroundColor = '';
+            });
+            fieldset.querySelectorAll('input:not([type="radio"]):not([type="checkbox"]), textarea').forEach(input => {
+                input.style.borderColor = ''; // Clear explicit red border on text/file inputs
             });
 
-            // Run checks
             fieldset.querySelectorAll('[required]').forEach(input => {
+                // Ensure field is visible and required
+                if (input.closest('.form-page') !== fieldset) return;
+
                 let isInputValid = true;
                 
-                // Logic for Radio, Checkbox, File, and Text inputs
+                // --- Custom Validation for Groups (Radio/Checkbox) ---
                 if (input.type === 'radio') {
                     const radioName = input.name;
-                    if (!document.querySelector(`input[name="${radioName}"]:checked`)) {
+                    // Check if *any* radio in the group is checked
+                    if (!fieldset.querySelector(`input[name="${radioName}"]:checked`)) {
                         isInputValid = false;
                     }
                 } else if (input.type === 'checkbox') {
                     if (!input.checked) {
                         isInputValid = false;
                     }
-                } else if (input.type === 'file') {
-                    if (input.files.length === 0) {
-                        isInputValid = false;
-                    }
-                } else if (!input.value.trim()) {
+                } else if (!input.checkValidity()) {
                     isInputValid = false;
                 }
 
+                // Apply custom error borders if invalid
                 if (!isInputValid) {
                     isValid = false;
-                    // Apply visual error state
+                    if (!firstInvalid) firstInvalid = input;
+
                     if (input.type === 'checkbox' && input.id === 'data_processing_consent') {
                         const consentLabel = document.getElementById('consent-label');
                         consentLabel.style.backgroundColor = 'rgba(255, 0, 0, 0.1)';
                         consentLabel.style.border = '1px solid red';
                     } else if (input.type === 'radio') {
-                        const radioGroup = document.querySelector(`input[name="${input.name}"]`).closest('.radio-group');
+                        const radioGroup = input.closest('.radio-group');
                         if (radioGroup) {
                             radioGroup.style.border = '1px solid red';
-                            radioGroup.style.padding = '10px';
                         }
                     } else {
+                        // For other inputs, use the CSS class that already exists
                         input.style.borderColor = 'red';
+                        input.reportValidity(); 
                     }
-                    input.dataset.invalid = "true";
-                } else {
-                    delete input.dataset.invalid;
                 }
             });
+            
+            // Scroll to the first detected error
+            if (!isValid) {
+                 if (firstInvalid) {
+                    if (firstInvalid.id === 'data_processing_consent') {
+                        document.getElementById('consent-label').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    } else if (firstInvalid.type === 'radio') {
+                        firstInvalid.closest('.radio-group').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    } else {
+                        firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                }
+            }
             
             return isValid;
         }
 
-        function scrollToFirstError(fieldset) {
-            const firstInvalid = fieldset.querySelector('[data-invalid="true"]') || fieldset.querySelector(':invalid');
-            if (firstInvalid) {
-                if (firstInvalid.id === 'data_processing_consent') {
-                    document.getElementById('consent-label').scrollIntoView({ behavior: 'smooth', block: 'center' });
-                } 
-                else if (firstInvalid.type === 'radio') {
-                    firstInvalid.closest('.radio-group').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // --- Event Handlers ---
+
+        form.addEventListener('click', function(event) {
+            const target = event.target;
+            const currentFieldset = fieldsets[currentPage - 1];
+
+            if (target.classList.contains('accent-button') && target.type === 'button') {
+                event.preventDefault(); // Stop default form action
+
+                if (validateCurrentPage(currentFieldset)) {
+                    if (currentPage < fieldsets.length) {
+                        currentPage++;
+                        updateFormDisplay();
+                    }
                 }
-                else {
-                    firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-            }
-        }
-        
-        function nextPage(fromPage) {
-            const currentFieldset = document.getElementById(`page-${fromPage}`);
-            let isValid = validateFieldset(currentFieldset); 
-
-            if (isValid && currentPage < totalPages) {
-                currentPage++;
-                updateFormVisibility();
-            } else if (!isValid) {
-                scrollToFirstError(currentFieldset);
-            }
-        }
-
-        function prevPage(fromPage) {
-            if (currentPage > 1) {
-                currentPage--;
-                updateFormVisibility();
-            }
-        }
-        
-        // Make the navigation functions globally accessible for the button onclick attributes in the HTML
-        window.nextPage = nextPage;
-        window.prevPage = prevPage;
-
-
-        // --- EVENT LISTENERS ---
-
-        // 1. Final Submission Handler (Fixes the unreliable submission/scrolling issue)
-        form.addEventListener('submit', function(event) {
-            const currentFieldset = document.getElementById('page-4');
-            
-            // 1. Run custom validation for red borders
-            const isCustomValid = validateFieldset(currentFieldset);
-            
-            // 2. Run browser native validation
-            const isNativeValid = form.checkValidity();
-
-            if (isCustomValid && isNativeValid) {
-                // SUCCESS: Disable button and show feedback (prevents double submits)
-                submitButton.disabled = true;
-                submitButton.textContent = 'Submitting... Please wait.';
-                submitButton.classList.add('submitting');
-                // Allow the form to submit naturally
-            } else {
-                // ERROR: Stop submission and show errors
+            } 
+            else if (target.classList.contains('dark-button') && target.type === 'button') {
                 event.preventDefault();
-                scrollToFirstError(currentFieldset);
+                if (currentPage > 1) {
+                    currentPage--;
+                    updateFormDisplay();
+                }
             }
         });
 
-        // 2. Initialize the form display
-        updateFormVisibility();
+        form.addEventListener('submit', function(event) {
+            const currentFieldset = fieldsets[currentPage - 1];
+            
+            // Final page validation check
+            if (!validateCurrentPage(currentFieldset)) {
+                event.preventDefault();
+            } else {
+                // SUCCESS: Prevent double submits
+                submitButton.disabled = true;
+                submitButton.textContent = 'Submitting... Please wait.';
+                submitButton.classList.add('submitting');
+                // Allow form to submit
+            }
+        });
+
+        // Initialize the form
+        updateFormDisplay();
     });
 </script>
