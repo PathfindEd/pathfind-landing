@@ -1,25 +1,152 @@
-/* --- GLOBAL BRAND VARIABLES (REQUIRED FOR STYLES TO FUNCTION) --- */
+/* --- GLOBAL BRAND VARIABLES --- */
 :root {
-    /* Pathfind Education Official Brand Variables */
-    --primary: #112649; /* Deep Navy Blue */
-    --accent: #f5a623; /* Official Gold/Orange accent */
-    --muted: #6b7280; /* Official Neutral Grey */
+    --primary: #112649; /* Pathfind Navy */
+    --accent: #f5a623;  /* Pathfind Gold */
+    --text: #111827;
+    --muted: #6b7280;
+    --light-bg: #f3f6fa;
     --border-color: #e5e7eb; /* Reliable light grey for borders */
+    --max-width: 1000px;
 }
 
-/* --- REVISED FORM SPECIFIC STYLES (On-Brand) --- */
+/* --- BASE & UTILITIES --- */
+* { 
+    box-sizing: border-box; 
+}
+    
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    color: var(--text); 
+    line-height: 1.7;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+a { 
+    text-decoration: none; 
+    color: inherit; 
+    transition: 0.2s; 
+}
+a:hover { 
+    color: var(--accent); 
+}
+
+img { 
+    max-width: 100%; 
+    height: auto; 
+}
+
+/* POST CONTENT STYLES */
+.post-content h2 { 
+    color: var(--primary); 
+    margin-top: 1.5em; 
+}
+.post-content blockquote { 
+    border-left: 4px solid var(--accent); 
+    padding-left: 15px; 
+    color: var(--muted); 
+    font-style: italic; 
+}
+
+/* --- HEADER STYLES --- */
+header {
+    background: linear-gradient(180deg, #0e203d 0%, #112649 100%);
+    color: #fff;
+    padding: 20px 0;
+    border-bottom: 4px solid var(--accent);
+}
+    
+.header-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+    font-size: 20px;
+    color: #fff;
+}
+    
+.brand-logo img {
+    height: 40px;
+    width: auto;
+    background: #fff;
+    border-radius: 6px;
+    padding: 4px;
+}
+
+.nav-cta {
+    background: var(--accent);
+    color: var(--primary); /* Use variable for consistency */
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 14px;
+}
+    
+.nav-cta:hover { 
+    opacity: 0.9; 
+    color: var(--primary); 
+}
+
+/* --- CONTENT WRAPPER --- */
+main {
+    flex: 1;
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* --- FOOTER STYLES --- */
+footer {
+    background: #f8f9fa;
+    border-top: 1px solid var(--border-color); /* Use variable for consistency */
+    padding: 40px 20px;
+    text-align: center;
+    margin-top: auto;
+}
+    
+.footer-btn {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--primary);
+    font-weight: 600;
+    border: 2px solid var(--primary);
+    padding: 10px 20px;
+    border-radius: 6px;
+}
+.footer-btn:hover { 
+    background: var(--primary); 
+    color: #fff; 
+}
+
+/* ------------------------------------------------------------------ */
+/* --- FORM & THANK YOU PAGE STYLES (Paste Consolidated Block Here) --- */
+/* ------------------------------------------------------------------ */
+
 .form-container { 
-    max-width: 800px; /* Increased max width slightly for better spacing */
+    max-width: 800px; 
     margin: 40px auto 80px; 
-    padding: 40px; /* Increased padding */
+    padding: 40px; 
     background: #fff; 
     border-radius: 12px; 
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08); /* More prominent shadow */
-    border: none; /* Removed unnecessary thin border */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08); 
+    border: none; 
 }
 .form-header-title { 
     color: var(--primary); 
-    font-size: 30px; /* Slightly larger heading */
+    font-size: 30px; 
     margin-bottom: 10px; 
     text-align: center; 
 }
@@ -28,7 +155,7 @@
     text-align: center; 
     margin-bottom: 40px; 
     font-size: 16px; 
-    border-bottom: 1px solid var(--border-color); /* Added separation line */
+    border-bottom: 1px solid var(--border-color); 
     padding-bottom: 25px;
 }
 .form-page { 
@@ -42,7 +169,7 @@
     color: var(--primary); 
     margin-bottom: 20px; 
     padding-bottom: 8px; 
-    border-bottom: 2px solid var(--accent); /* Accent orange underline */
+    border-bottom: 2px solid var(--accent); 
     width: 100%; 
 }
 .form-page label { 
@@ -50,30 +177,30 @@
     margin-top: 20px; 
     margin-bottom: 6px; 
     font-weight: 600; 
-    color: #374151; /* Neutral dark grey for label text */
+    color: #374151; 
     font-size: 15px; 
 }
 .form-page input[type="text"], .form-page input[type="email"], .form-page input[type="tel"], .form-page input[type="date"], .form-page input[type="number"], .form-page textarea, .form-page input[type="file"] { 
     width: 100%; 
-    padding: 12px 16px; /* Slightly more horizontal padding */
-    margin-bottom: 0; /* Cleared margin to prevent double spacing */
-    border: 1px solid var(--border-color); /* Consistent border color */
-    border-radius: 8px; /* Slightly rounder corners */
+    padding: 12px 16px; 
+    margin-bottom: 0; 
+    border: 1px solid var(--border-color); 
+    border-radius: 8px; 
     font-size: 16px; 
     box-sizing: border-box; 
     transition: border-color 0.2s, box-shadow 0.2s; 
-    background: #fdfdfd; /* Off-white background for fields */
+    background: #fdfdfd; 
 }
 .form-page input:focus, .form-page textarea:focus { 
     outline: none; 
-    border-color: var(--primary); /* Focus border is Navy */
-    box-shadow: 0 0 0 3px rgba(17, 38, 73, 0.1); /* Subtle Navy shadow */
+    border-color: var(--primary); 
+    box-shadow: 0 0 0 3px rgba(17, 38, 73, 0.1); 
 }
 
 /* Radio/Checkbox Group Styling */
 .radio-group { 
-    background: #fafafa; /* Light grey background */
-    padding: 15px; /* Increased padding */
+    background: #fafafa; 
+    padding: 15px; 
     border: 1px solid var(--border-color); 
     border-radius: 8px; 
     margin-bottom: 10px; 
@@ -85,14 +212,14 @@
     color: #333; 
     margin-top: 8px; 
     display: flex; 
-    align-items: flex-start; /* Aligned to the top for multi-line labels */
+    align-items: flex-start; 
     gap: 10px;
     cursor: pointer;
 }
 .radio-group input[type="radio"], .form-page input[type="checkbox"] { 
     margin-right: 8px; 
     min-width: 16px; 
-    accent-color: var(--accent); /* Brand color on native radio/checkbox */
+    accent-color: var(--accent); 
     transform: scale(1.1);
 }
 #consent-label { 
@@ -110,26 +237,26 @@
 .nav-buttons { 
     display: flex; 
     justify-content: space-between; 
-    margin-top: 40px; /* Increased margin */
+    margin-top: 40px; 
     padding-top: 20px; 
-    border-top: 1px solid var(--border-color); /* Consistent border color */
+    border-top: 1px solid var(--border-color); 
 }
 
 /* Primary Button (Next/Submit) - Accent Orange */
 .accent-button, .submit-button { 
     background-color: var(--accent); 
-    color: var(--primary); /* Navy text on Orange background */
-    padding: 14px 28px; /* Larger padding for prominence */
-    border: none; /* Removed border */
+    color: var(--primary); 
+    padding: 14px 28px; 
+    border: none; 
     border-radius: 8px; 
     cursor: pointer; 
-    font-weight: 700; /* Bolder font */
+    font-weight: 700; 
     transition: background-color 0.2s, transform 0.2s; 
 }
 .accent-button:hover, .submit-button:hover { 
-    background-color: #e0961f; /* Darker orange on hover (using a derived shade) */
+    background-color: #e0961f; 
     transform: translateY(-1px);
-    opacity: 1; /* Override opacity property */
+    opacity: 1; 
 }
 .submit-button:disabled { 
     background: #9ca3af; 
@@ -140,8 +267,8 @@
 
 /* Secondary Button (Previous) - Dark/Muted */
 .dark-button { 
-    background-color: #e5e7eb; /* Light grey/off-white background */
-    color: #374151; /* Dark grey text */
+    background-color: var(--border-color); 
+    color: #374151; 
     padding: 14px 28px; 
     border: none; 
     border-radius: 8px; 
@@ -150,7 +277,7 @@
     transition: background-color 0.2s; 
 }
 .dark-button:hover { 
-    background-color: #d1d5db; /* Darker grey on hover */
+    background-color: #d1d5db; 
 }
 
 /* Progress Indicator */
@@ -174,12 +301,12 @@
     left: 0;
     right: 0;
     height: 2px;
-    background: var(--border-color); /* Light line */
+    background: var(--border-color); 
     z-index: 1;
     transform: translateY(-50%);
 }
 .step { 
-    width: 32px; /* Slightly larger step circles */
+    width: 32px; 
     height: 32px; 
     line-height: 32px;
     border-radius: 50%; 
@@ -193,16 +320,15 @@
     font-size: 14px; 
     transition: all 0.3s; 
     position: relative;
-    z-index: 2; /* Ensures circles overlay the line */
+    z-index: 2; 
 }
 .step.active { 
-    background: var(--primary); /* Active step is Navy */
+    background: var(--primary); 
     border-color: var(--primary);
     color: #fff; 
     transform: scale(1.1);
     box-shadow: 0 0 0 4px rgba(17, 38, 73, 0.1);
 }
-/* Ensure lines between steps are hidden now the bar is a pseudo-element */
 .step:not(:last-child)::after { display: none; }
 
 .hidden { 
@@ -215,7 +341,7 @@
     .nav-buttons button { width: 100%; }
 }
 
-/* --- THANK YOU PAGE STYLES (On-Brand) --- */
+/* --- THANK YOU PAGE STYLES --- */
 .thank-you-container {
     max-width: 800px;
     margin: 80px auto;
@@ -265,7 +391,7 @@
     color: var(--accent);
     font-weight: 700;
 }
-.btn-accent-home { /* A distinct class for the home button */
+.btn-accent-home { 
     background: var(--accent);
     color: var(--primary) !important;
     padding: 14px 30px;

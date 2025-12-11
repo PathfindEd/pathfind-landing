@@ -1,151 +1,45 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
-  
-  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+  
+  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap">
-  
-  <style>
-    :root {
-      --primary: #112649; /* Pathfind Navy */
-      --accent: #f5a623;  /* Pathfind Gold */
-      --text: #111827;
-      --muted: #6b7280;
-      --light-bg: #f3f6fa;
-      --max-width: 1000px;
-    }
-
-    * { box-sizing: border-box; }
-    
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      margin: 0;
-      color: var(--text); 
-      line-height: 1.7;
-      background: #fff;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    a { text-decoration: none; color: inherit; transition: 0.2s; }
-    a:hover { color: var(--accent); }
-
-    /* HEADER */
-    header {
-      background: linear-gradient(180deg, #0e203d 0%, #112649 100%);
-      color: #fff;
-      padding: 20px 0;
-      border-bottom: 4px solid var(--accent);
-    }
-    
-    .header-container {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 20px;
-      display: flex;
-      align-items: center; /* CSS 'center' */
-      justify-content: space-between;
-    }
-
-    .brand-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 700;
-      font-size: 20px;
-      color: #fff;
-    }
-    
-    .brand-logo img {
-      height: 40px;
-      width: auto;
-      background: #fff;
-      border-radius: 6px;
-      padding: 4px;
-    }
-
-    .nav-cta {
-      background: var(--accent);
-      color: #112649;
-      padding: 8px 16px;
-      border-radius: 6px;
-      font-weight: 700;
-      font-size: 14px;
-    }
-    
-    .nav-cta:hover { opacity: 0.9; color: #112649; }
-
-    /* CONTENT WRAPPER */
-    main {
-      flex: 1;
-      width: 100%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-
-    /* FOOTER */
-    footer {
-      background: #f8f9fa;
-      border-top: 1px solid #e5e7eb;
-      padding: 40px 20px;
-      text-align: center;
-      margin-top: auto;
-    }
-    
-    .footer-btn {
-      display: inline-block;
-      margin-top: 10px;
-      color: var(--primary);
-      font-weight: 600;
-      border: 2px solid var(--primary);
-      padding: 10px 20px;
-      border-radius: 6px;
-    }
-    .footer-btn:hover { background: var(--primary); color: #fff; }
-
-    /* RESPONSIVE */
-    img { max-width: 100%; height: auto; }
-    
-    /* UTILITIES */
-    .post-content h2 { color: var(--primary); margin-top: 1.5em; }
-    .post-content blockquote { border-left: 4px solid var(--accent); padding-left: 15px; color: var(--muted); font-style: italic; }
-  </style>
-</head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap">
+  
+  <link rel="stylesheet" href="/assets/css/style.css"> 
+  </head>
 <body>
 
-  <header>
-    <div class="header-container">
-      <a href="/" class="brand-logo">
-        <img src="https://i.imgur.com/JSe2Jgf.png" alt="Logo">
-        <span>Pathfind Blog</span>
-      </a>
-      <a href="https://www.pathfindeducation.com" class="nav-cta">
-        &larr; Back to Main Site
-      </a>
-    </div>
-  </header>
+  <header>
+    <div class="header-container">
+      <a href="/" class="brand-logo">
+        <img src="https://i.imgur.com/JSe2Jgf.png" alt="Logo">
+        <span>Pathfind Blog</span>
+      </a>
+      <a href="https://www.pathfindeducation.com" class="nav-cta">
+        &larr; Back to Main Site
+      </a>
+    </div>
+  </header>
 
-  <main>
-    {{ content }}
-  </main>
+  <main>
+    {{ content }}
+  </main>
 
-  <footer>
-    <p style="color: var(--muted); font-size: 0.9em;">
-      Copyright &copy; {{ site.time | date: "%Y" }} Pathfind Education Ltd.
-    </p>
-    <div style="margin-top: 20px;">
-      <p>Ready to apply to universities abroad for free?</p>
-      <a href="https://link.pathfindeducation.com/apply" class="footer-btn">
-        Start Your Free Application
-      </a>
-    </div>
-  </footer>
+  <footer>
+    <p style="color: var(--muted); font-size: 0.9em;">
+      Copyright &copy; {{ site.time | date: "%Y" }} Pathfind Education Ltd.
+    </p>
+    <div style="margin-top: 20px;">
+      <p>Ready to apply to universities abroad for free?</p>
+      <a href="https://link.pathfindeducation.com/apply" class="footer-btn">
+        Start Your Free Application
+      </a>
+    </div>
+  </footer>
 
 </body>
 </html>
