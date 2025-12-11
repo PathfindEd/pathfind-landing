@@ -5,7 +5,7 @@
     --text: #111827;
     --muted: #6b7280;
     --light-bg: #f3f6fa;
-    --border-color: #e5e7eb; /* Reliable light grey for borders */
+    --border-color: #e5e7eb;
     --max-width: 1000px;
 }
 
@@ -13,7 +13,7 @@
 * { 
     box-sizing: border-box; 
 }
-    
+    
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     margin: 0;
@@ -58,7 +58,7 @@ header {
     padding: 20px 0;
     border-bottom: 4px solid var(--accent);
 }
-    
+    
 .header-container {
     max-width: var(--max-width);
     margin: 0 auto;
@@ -76,7 +76,7 @@ header {
     font-size: 20px;
     color: #fff;
 }
-    
+    
 .brand-logo img {
     height: 40px;
     width: auto;
@@ -87,13 +87,13 @@ header {
 
 .nav-cta {
     background: var(--accent);
-    color: var(--primary); /* Use variable for consistency */
+    color: var(--primary);
     padding: 8px 16px;
     border-radius: 6px;
     font-weight: 700;
     font-size: 14px;
 }
-    
+    
 .nav-cta:hover { 
     opacity: 0.9; 
     color: var(--primary); 
@@ -111,12 +111,12 @@ main {
 /* --- FOOTER STYLES --- */
 footer {
     background: #f8f9fa;
-    border-top: 1px solid var(--border-color); /* Use variable for consistency */
+    border-top: 1px solid var(--border-color);
     padding: 40px 20px;
     text-align: center;
     margin-top: auto;
 }
-    
+    
 .footer-btn {
     display: inline-block;
     margin-top: 10px;
@@ -132,7 +132,7 @@ footer {
 }
 
 /* ------------------------------------------------------------------ */
-/* --- FORM & THANK YOU PAGE STYLES (Paste Consolidated Block Here) --- */
+/* --- FORM & THANK YOU PAGE STYLES --- */
 /* ------------------------------------------------------------------ */
 
 .form-container { 
