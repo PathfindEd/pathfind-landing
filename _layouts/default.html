@@ -1,57 +1,64 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
-  
-  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+  
+  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap">
-  
-  <link rel="stylesheet" href="/assets/css/style.css?v={{ site.time | date: '%s' }}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap">
+  
+  <link rel="stylesheet" href="/assets/css/style.css?v={{ site.time | date: '%s' }}">
 </head>
 <body>
 
-  <div class="sticky-cta-wrapper">
-    <p>Secure your overseas university offer with our **cost-free** guidance.</p>
-    <a href="{{ site.baseurl }}/consultation" class="sticky-cta-button">
-      Start Your Free Application &rarr;
-    </a>
-  </div>
-  <header>
-    <div class="header-container">
-      <a href="{{ site.baseurl }}/" class="brand-logo">
-        <img src="{{ site.baseurl }}/assets/images/logo.png" alt="{{ site.title }} Logo">
-        <span>{{ site.title }}</span>
-      </a>
-      
-      <div class="header-nav-group">
-          <a href="https://blog.pathfindeducation.com" class="nav-link-blog">
-            Blog
-          </a>
-          <a href="{{ site.baseurl }}/consultation" class="nav-cta">
-            Free Consultation
-          </a>
-      </div>
-    </div>
-  </header>
+  {% unless page.url contains '/consultation' or page.url contains '/thank-you' %}
+  <div class="sticky-cta-wrapper">
+    <p>Secure your overseas university offer with our <strong style="font-weight: 700;">cost-free</strong> guidance.</p>
+    <a href="{{ site.baseurl }}/consultation" class="sticky-cta-button">
+      Start Your Free Application &rarr;
+    </a>
+  </div>
+  {% endunless %}
+  
+  <header>
+    <div class="header-container">
+      <a href="{{ site.baseurl }}/" class="brand-logo">
+        <img src="{{ site.baseurl }}/assets/images/logo.png" alt="{{ site.title }} Logo">
+        <span>{{ site.title }}</span>
+      </a>
+      
+      <div class="header-nav-group">
+          <a href="https://blog.pathfindeducation.com" class="nav-link-blog">
+            Blog
+          </a>
+          {% unless page.url contains '/consultation' or page.url contains '/thank-you' %}
+          <a href="{{ site.baseurl }}/consultation" class="nav-cta">
+            Free Consultation
+          </a>
+          {% endunless %}
+      </div>
+    </div>
+  </header>
 
-  <main>
-    {{ content }}
-  </main>
+  <main>
+    {{ content }}
+  </main>
 
-  <footer>
-    <p style="color: var(--muted); font-size: 0.9em;">
-      Copyright &copy; {{ site.time | date: "%Y" }} Pathfind Education Ltd.
-    </p>
-    <div style="margin-top: 20px;">
-      <p>Ready to apply to universities abroad for free?</p>
-      <a href="{{ site.baseurl }}/consultation" class="footer-btn">
-        Start Your Free Application
-      </a>
-    </div>
-  </footer>
+  <footer>
+    <p style="color: var(--muted); font-size: 0.9em;">
+      Copyright &copy; {{ site.time | date: "%Y" }} Pathfind Education Ltd.
+    </p>
+    {% unless page.url contains '/consultation' or page.url contains '/thank-you' %}
+    <div style="margin-top: 20px;">
+      <p>Ready to apply to universities abroad for free?</p>
+      <a href="{{ site.baseurl }}/consultation" class="footer-btn">
+        Start Your Free Application
+      </a>
+    </div>
+    {% endunless %}
+  </footer>
 
 </body>
 </html>
