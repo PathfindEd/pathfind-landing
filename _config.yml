@@ -21,3 +21,8 @@ defaults:
       path: "" # Apply to all files/folders not covered by other defaults
     values:
       layout: "default"
+# Add or update this section in _config.yml
+# Include all assets and necessary files
+include:
+  - _redirects
+  - assets/

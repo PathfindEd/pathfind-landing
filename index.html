@@ -17,7 +17,7 @@
   
   <meta property="og:title" content="Pathfind Education - Study Abroad for Free">
   <meta property="og:description" content="Expert, cost-free support for your study abroad journey to the UK, USA, Canada, Australia and NZ.">
-  <meta property="og:image" content="https://i.imgur.com/JSe2Jgf.png">
+  <meta property="og:image" content="/assets/images/logo.png">
   <meta property="og:url" content="https://www.pathfindeducation.com">
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
@@ -34,7 +34,7 @@
     "@type": "EducationalOrganization",
     "name": "Pathfind Education Ltd",
     "url": "https://www.pathfindeducation.com",
-    "logo": "https://i.imgur.com/JSe2Jgf.png",
+    "logo": "/assets/images/logo.png",
     "description": "Free education consultancy for international students.",
     "address": {
       "@type": "PostalAddress",
@@ -67,6 +67,7 @@
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
       margin:0; color:#111827; line-height:1.6; -webkit-font-smoothing:antialiased;
       background:#fff;
+      padding-top: 0px; /* REMOVED: Space for the fixed sticky bar */
     }
 
     a{color:inherit; text-decoration:none; transition: opacity 0.2s;}
@@ -143,6 +144,10 @@
       .ctas{justify-content:center}
       .footer-cols{flex-direction: column; gap: 24px;}
     }
+
+    /* --- STICKY CTA (Removed) --- */
+    .sticky-cta-wrapper { display: none; }
+    
   </style>
 </head>
 <body>
@@ -151,7 +156,7 @@
     <div class="hero" role="banner">
       <div class="brand">
         <div class="logo-container" aria-hidden="true">
-          <img src="https://i.imgur.com/JSe2Jgf.png" alt="Pathfind Education Logo">
+          <img src="/assets/images/logo.png" alt="Pathfind Education Logo">
         </div>
         <div style="color:rgba(255,255,255,0.95)">
           <div style="font-weight:700; font-size:22px; line-height: 1.2;">Pathfind Education</div>
@@ -164,9 +169,11 @@
         <p class="lead">We manage your entire application process for universities in the UK, USA, Canada, Australia and New Zealand. Our professional guidance is completely free.</p>
         
         <div class="ctas">
-          <a href="https://wa.me/447836337844" class="btn btn-primary" target="_blank">Chat on WhatsApp</a>
-          <a href="mailto:Info@pathfindeducation.com" class="btn btn-outline">Email Us</a>
-          <a href="https://pathfindeducation.com/consultation" class="btn btn-white" target="_blank">Submit an Enquiry</a>
+          <a href="https://blog.pathfindeducation.com" class="btn btn-white" target="_blank">Read Our Blog</a>
+          
+          <a href="https://wa.me/447836337844" class="btn btn-outline" target="_blank">Chat on WhatsApp</a>
+
+          <a href="https://pathfindeducation.com/consultation" class="btn btn-primary" target="_blank">Start Free Application</a>
         </div>
       </div>
     </div>
@@ -200,7 +207,7 @@
         <div class="step">
           <div class="step-number">1</div>
           <h3>Connect</h3>
-          <div class="muted">Click 'Submit an Enquiry' to access our official intake form.</div>
+          <div class="muted">Click 'Start Free Application' to access our official intake form.</div>
         </div>
         <div class="step">
           <div class="step-number">2</div>
