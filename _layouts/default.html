@@ -46,11 +46,12 @@
     {{ content }}
   </main>
 
-  <footer>
-    <p style="color: var(--muted); font-size: 0.9em;">
-      Copyright &copy; {{ site.time | date: "%Y" }} Pathfind Education Ltd.
+<footer>
+        <p style="font-size: 0.8em; color: var(--muted); margin-bottom: 5px;">
+      © {{ site.time | date: "%Y" }} Pathfind Education Ltd. All rights reserved. We are fully GDPR compliant. All personal data is handled in accordance with GDPR regulations.
     </p>
-    {% unless page.url contains '/consultation' or page.url contains '/thank-you' %}
+    
+        {% unless page.url contains '/consultation' or page.url contains '/thank-you' %}
     <div style="margin-top: 20px;">
       <p>Ready to apply to universities abroad for free?</p>
       <a href="{{ site.baseurl }}/consultation" class="footer-btn">

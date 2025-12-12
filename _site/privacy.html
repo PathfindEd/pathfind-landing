@@ -9,8 +9,9 @@
         /* Custom Colors (Pathfind branding) */
         :root {
             --primary: #112649; /* Pathfind Navy */
-            --accent: #f5a623;  /* Pathfind Gold */
+            --accent: #f5a623;  /* Pathfind Gold */
             --text-color: #1f2937; /* Dark Gray */
+            --muted: #6b7280; /* Muted gray for footer text */
             --light-bg: #f7f9fc;
         }
         
@@ -25,8 +26,8 @@
         /* Styling for the main content block */
         .privacy-policy {
             max-width: 1000px;
-            margin: 40px auto; 
-            padding: 30px; 
+            margin: 40px auto; 
+            padding: 30px; 
             background: #ffffff;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
@@ -112,6 +113,9 @@
             max-width: 1000px;
             margin: 20px auto 0;
             padding: 0 30px;
+            display: flex;
+            gap: 10px; /* Space out the links */
+            flex-wrap: wrap;
         }
         
         /* Styling the Link itself for a professional look (NOW WITH ORANGE OUTLINE) */
@@ -135,6 +139,21 @@
             color: var(--primary);
             border-color: #d18f1f; /* Slightly darker accent on hover */
         }
+        
+        /* Footer CTA Button Style (copied from main site style) */
+        .footer-cta-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+        .footer-cta-btn:hover {
+            background-color: #d18f1f; /* Slightly darker accent on hover */
+        }
     </style>
 </head>
 <body>
@@ -143,6 +162,9 @@
     <a href="/">
         <span style="margin-right: 5px;">&larr;</span> Return to Homepage
     </a>
+    <a href="/terms.html">
+        Terms & Conditions
+    </a>
 </div>
 
 <article class="privacy-policy">
@@ -150,7 +172,7 @@
     
     <p class="effective-date text-sm text-gray-500"><strong>Effective Date: 11 December 2025</strong></p>
 
-   <section id="introduction">
+    <section id="introduction">
         <h2>1. Introduction</h2>
         <p>Pathfind Education Ltd ("we", "us", or "our") is a UK-registered education consultancy. This policy outlines how we handle your personal data when you use our services to apply for university study abroad.</p>
         <p><br><strong>Contact Details:</strong> For all data protection inquiries, please contact us via email: <strong>info@pathfindeducation.com</strong>.</p>
@@ -263,11 +285,17 @@
     </section>
 </article>
 
-<div class="nav-link-area" style="margin-top: 20px; margin-bottom: 40px;">
-    <a href="/">
-        <span style="margin-right: 5px;">&larr;</span> Return to Homepage
-    </a>
-</div>
+<footer style="max-width: 1000px; margin: 40px auto 20px; padding: 0 30px; text-align: center;">
+    <p style="font-size: 0.8em; color: var(--muted); margin-bottom: 5px;">
+        &copy; 2025 Pathfind Education Ltd. All rights reserved. We are fully GDPR compliant. All personal data is handled in accordance with GDPR regulations.
+    </p>
 
+    <div style="margin-top: 20px;">
+        <p style="color: var(--text-color);">Ready to apply to universities abroad for free?</p>
+        <a href="/consultation" class="footer-cta-btn">
+            Start Your Free Application
+        </a>
+    </div>
+</footer>
 </body>
 </html>
