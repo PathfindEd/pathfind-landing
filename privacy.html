@@ -23,24 +23,10 @@
         }
 
         /* Styling for the main content block */
-        .policy-container {
-            max-width: 1000px;
-            margin: 0 auto; /* Removed top/bottom margin */
-            padding: 0 30px 40px 30px; /* Adjusted padding */
-            /* Removed background and shadow from the container, moved to article */
-        }
-        
-        /* New: Branded Header */
-        .policy-header {
-            background-color: var(--primary);
-            color: white;
-            padding: 30px 0;
-            margin-bottom: 40px;
-        }
-
-        /* Article Styling for the content card */
         .privacy-policy {
-            padding: 30px;
+            max-width: 1000px;
+            margin: 40px auto; 
+            padding: 30px; 
             background: #ffffff;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
@@ -120,135 +106,167 @@
             border: 1px solid #e5e7eb;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
         }
+        
+        /* Optimized Navigation Area Styling */
+        .nav-link-area {
+            max-width: 1000px;
+            margin: 20px auto 0;
+            padding: 0 30px;
+        }
+        
+        /* Styling the Link itself for a professional look (NOW WITH ORANGE OUTLINE) */
+        .nav-link-area a {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.95rem;
+            color: var(--primary);
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            border: 1px solid var(--accent); /* CHANGED TO ACCENT COLOR */
+            background-color: #ffffff;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        
+        .nav-link-area a:hover {
+            background-color: #fff8f0; /* Light hover background */
+            text-decoration: none;
+            color: var(--primary);
+            border-color: #d18f1f; /* Slightly darker accent on hover */
+        }
     </style>
 </head>
 <body>
 
-<div class="policy-header">
-    <div class="policy-container">
-        <h1 style="color: white; font-size: 2.5rem; margin: 0;">Data Protection & Privacy</h1>
-        <p style="color: rgba(255, 255, 255, 0.8); margin-top: 5px;">Your trust is essential. This policy outlines how Pathfind Education Ltd. handles your data.</p>
-    </div>
+<div class="nav-link-area">
+    <a href="/">
+        <span style="margin-right: 5px;">&larr;</span> Return to Homepage
+    </a>
 </div>
 
-<div class="policy-container">
-    <article class="privacy-policy">
-        <h1 style="border-bottom: 0; padding-bottom: 0; margin-top: 0;">Privacy Policy</h1>
+<article class="privacy-policy">
+    <h1>Privacy Policy</h1>
+    
+    <p class="effective-date text-sm text-gray-500"><strong>Effective Date: 11 December 2025</strong></p>
+
+    <section id="introduction">
+        <h2>1. Introduction</h2>
+        <p>Pathfind Education Ltd ("we", "us", or "our") is a UK-registered education consultancy. This policy outlines how we handle your personal data when you use our services to apply for university study abroad.</p>
+        <p><br><br><strong>Contact Details:</strong> For all data protection inquiries, please contact us via email: <strong>info@pathfindeducation.com</strong>.</p>
+    </section>
+
+    <section id="data-collection">
+        <h2>2. Data We Collect and Why</h2>
+        <p>We collect data necessary to assess your eligibility and submit university applications. Our legal basis for processing all data is <strong>Contractual Necessity</strong> (Article 6(1)(b) UK GDPR). We cannot provide our service without this data.</p>
         
-        <p class="effective-date text-sm text-gray-500"><strong>Effective Date: 11 December 2025</strong></p>
+        <div class="table-responsive">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th class="w-1/4">Data Category</th>
+                        <th class="w-1/3">Examples Collected</th>
+                        <th class="w-1/3">Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Identity &amp; Contact</strong></td>
+                        <td>Name, date of birth, current city and country, email, phone number.</td>
+                        <td>To establish contact and verify identity for application forms.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Academic</strong></td>
+                        <td>Transcripts, certificates, English proficiency proof, CVs.</td>
+                        <td>To meet university entry and eligibility requirements.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Operational</strong></td>
+                        <td>Passport copy or National ID copy.</td>
+                        <td>To verify identity for application forms and visa support documentation.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Financial</strong></td>
+                        <td>Bank statements/guarantees.</td>
+                        <td>To meet the financial proof requirements of a university application.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
 
-        <section id="introduction">
-            <h2>1. Introduction</h2>
-            <p>Pathfind Education Ltd ("we", "us", or "our") is a UK-registered education consultancy. This policy outlines how we handle your personal data when you use our services to apply for university study abroad.</p>
-            <p><strong>Contact Details:</strong> For all data protection inquiries, please contact us via email: <strong>info@pathfindeducation.com</strong>.</p>
-        </section>
+    <section id="data-sharing">
+        <h2>3. Data Sharing</h2>
+        <p>We share your data only when necessary to fulfil our contract with you:<br><br></p>
+        <ul class="list-disc ml-6 space-y-2">
+            <li><strong>Universities &amp; Educational Institutions:</strong> To process your admissions application.</li>
+            <li><strong>Application Platforms:</strong> Third-party aggregator platforms (e.g., ApplyBoard) for submitting applications.</li>
+            <li><strong>Authorised Partners:</strong> We refer you to separate, authorised partners for enrollment logistics and administrative support; we do not handle visa matters directly.</li>
+        </ul>
+        <p>We do not sell your personal data for marketing purposes.</p>
+    </section>
 
-        <section id="data-collection">
-            <h2>2. Data We Collect and Why</h2>
-            <p>We collect data necessary to assess your eligibility and submit university applications. Our legal basis for processing all data is <strong>Contractual Necessity</strong> (Article 6(1)(b) UK GDPR). We cannot provide our service without this data.</p>
-            
-            <div class="table-responsive">
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th class="w-1/4">Data Category</th>
-                            <th class="w-1/3">Examples Collected</th>
-                            <th class="w-1/3">Purpose</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Identity &amp; Contact</strong></td>
-                            <td>Name, date of birth, current city and country, email, phone number.</td>
-                            <td>To establish contact and verify identity for application forms.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Academic</strong></td>
-                            <td>Transcripts, certificates, English proficiency proof, CVs.</td>
-                            <td>To meet university entry and eligibility requirements.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Operational</strong></td>
-                            <td>Passport copy or National ID copy.</td>
-                            <td>To verify identity for application forms and visa support documentation.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Financial</strong></td>
-                            <td>Bank statements/guarantees.</td>
-                            <td>To meet the financial proof requirements of a university application.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
+    <section id="data-retention">
+        <h2>4. Data Retention</h2>
+        <p>We keep your personal data only for as long as necessary.</p>
+        
+        <div class="table-responsive">
+            <table class="retention-table">
+                <thead>
+                    <tr>
+                        <th class="w-1/4">Document Type</th>
+                        <th class="w-1/4">Retention Period</th>
+                        <th class="w-1/2">Reason for Retention</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Operational Documents (Passport, Transcripts)</strong></td>
+                        <td><strong>12 months</strong> after successful enrollment.</td>
+                        <td>For university verification and initial administrative tasks.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Operational Documents (Refusal/Withdrawal)</strong></td>
+                        <td><strong>6 months</strong> after application refusal or formal withdrawal.</td>
+                        <td>To maintain a record of the decision and assist with any potential appeals or future applications.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Other Data (Contact, Academic, Communications)</strong></td>
+                        <td><strong>7 years.</strong></td>
+                        <td>To comply with UK tax, legal, and reporting requirements.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
 
-        <section id="data-sharing">
-            <h2>3. Data Sharing</h2>
-            <p>We share your data only when necessary to fulfil our contract with you:<br><br></p>
-            <ul class="list-disc ml-6 space-y-2">
-                <li><strong>Universities &amp; Educational Institutions:</strong> To process your admissions application.</li>
-                <li><strong>Application Platforms:</strong> Third-party aggregator platforms (e.g., ApplyBoard) for submitting applications.</li>
-                <li><strong>Authorised Partners:</strong> We refer you to separate, authorised partners for enrollment logistics and administrative support; we do not handle visa matters directly.</li>
-            </ul>
-            <p>We do not sell your personal data for marketing purposes.</p>
-        </section>
+    <section id="your-rights">
+        <h2>5. Your Rights (UK GDPR)</h2>
+        <p>You have the following rights concerning your data, which you may exercise by contacting us at <strong>info@pathfindeducation.com</strong>:<br><br></p>
+        <ol class="list-decimal ml-6 space-y-2">
+            <li><strong>Right of Access:</strong> Request copies of your data.</li>
+            <li><strong>Right to Rectification:</strong> Request correction of inaccurate data.</li>
+            <li><strong>Right to Erasure (Right to be Forgotten):</strong> Request deletion of your data, under certain conditions.</li>
+            <li><strong>Right to Restrict Processing:</strong> Limit how we use your data.</li>
+            <li><strong>Right to Object:</strong> Object to our processing of your data.</li>
+            <li><strong>Right to Portability:</strong> Request transfer of your data to another party.</li>
+        </ol>
+    </section>
 
-        <section id="data-retention">
-            <h2>4. Data Retention</h2>
-            <p>We keep your personal data only for as long as necessary.</p>
-            
-            <div class="table-responsive">
-                <table class="retention-table">
-                    <thead>
-                        <tr>
-                            <th class="w-1/4">Document Type</th>
-                            <th class="w-1/4">Retention Period</th>
-                            <th class="w-1/2">Reason for Retention</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Operational Documents (Passport, Transcripts)</strong></td>
-                            <td><strong>12 months</strong> after successful enrollment.</td>
-                            <td>For university verification and initial administrative tasks.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Operational Documents (Refusal/Withdrawal)</strong></td>
-                            <td><strong>6 months</strong> after application refusal or formal withdrawal.</td>
-                            <td>To maintain a record of the decision and assist with any potential appeals or future applications.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Other Data (Contact, Academic, Communications)</strong></td>
-                            <td><strong>7 years.</strong></td>
-                            <td>To comply with UK tax, legal, and reporting requirements.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
+    <section id="complaints">
+        <h2>6. Complaints</h2>
+        <p>If you are not satisfied with our response, you have the right to lodge a complaint with the UK data protection authority:</p>
+        <p class="mt-4 p-4 border border-gray-200 bg-gray-50 rounded-lg">
+            <strong>The Information Commissioner's Office (ICO)</strong><br>
+            Website: <a href="https://ico.org.uk" target="_blank">ico.org.uk</a><br>
+        </p>
+    </section>
+</article>
 
-        <section id="your-rights">
-            <h2>5. Your Rights (UK GDPR)</h2>
-            <p>You have the following rights concerning your data, which you may exercise by contacting us at <strong>info@pathfindeducation.com</strong>:<br><br></p>
-            <ol class="list-decimal ml-6 space-y-2">
-                <li><strong>Right of Access:</strong> Request copies of your data.</li>
-                <li><strong>Right to Rectification:</strong> Request correction of inaccurate data.</li>
-                <li><strong>Right to Erasure (Right to be Forgotten):</strong> Request deletion of your data, under certain conditions.</li>
-                <li><strong>Right to Restrict Processing:</strong> Limit how we use your data.</li>
-                <li><strong>Right to Object:</strong> Object to our processing of your data.</li>
-                <li><strong>Right to Portability:</strong> Request transfer of your data to another party.</li>
-            </ol>
-        </section>
-
-        <section id="complaints">
-            <h2>6. Complaints</h2>
-            <p>If you are not satisfied with our response, you have the right to lodge a complaint with the UK data protection authority:</p>
-            <p class="mt-4 p-4 border border-gray-200 bg-gray-50 rounded-lg">
-                <strong>The Information Commissioner's Office (ICO)</strong><br>
-                Website: <a href="https://ico.org.uk" target="_blank">ico.org.uk</a><br>
-            </p>
-        </section>
-    </article>
+<div class="nav-link-area" style="margin-top: 20px; margin-bottom: 40px;">
+    <a href="/">
+        <span style="margin-right: 5px;">&larr;</span> Return to Homepage
+    </a>
 </div>
 
 </body>

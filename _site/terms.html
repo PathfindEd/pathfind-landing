@@ -11,13 +11,14 @@
             --primary: #112649; /* Pathfind Navy */
             --accent: #f5a623;  /* Pathfind Gold */
             --text-color: #1f2937; /* Dark Gray */
+            --light-bg: #f7f9fc;
         }
         
         /* Apply custom colors and font to the body */
         body {
             font-family: 'Inter', sans-serif;
             color: var(--text-color);
-            background-color: #f7f9fc;
+            background-color: var(--light-bg);
             line-height: 1.6;
         }
 
@@ -78,9 +79,44 @@
             font-weight: 700;
             text-decoration: underline;
         }
+        
+        /* Optimized Navigation Area Styling */
+        .nav-link-area {
+            max-width: 1000px;
+            margin: 20px auto 0;
+            padding: 0 30px;
+        }
+        
+        /* Styling the Link itself for a professional look (NOW WITH ORANGE OUTLINE) */
+        .nav-link-area a {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.95rem;
+            color: var(--primary);
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            border: 1px solid var(--accent); /* CHANGED TO ACCENT COLOR */
+            background-color: #ffffff;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        
+        .nav-link-area a:hover {
+            background-color: #fff8f0; /* Light hover background */
+            text-decoration: none;
+            color: var(--primary);
+            border-color: #d18f1f; /* Slightly darker accent on hover */
+        }
     </style>
 </head>
 <body>
+
+<div class="nav-link-area">
+    <a href="/">
+        <span style="margin-right: 5px;">&larr;</span> Return to Homepage
+    </a>
+</div>
 
 <article class="terms-content">
     <h1>Terms and Conditions</h1>
@@ -109,12 +145,20 @@
 
     <section id="contractual-necessity">
         <h2>5. Data Processing (Legal Basis)</h2>
-        <p>All personal data is processed on the basis of **<span style="font-weight: 700;">Contractual Necessity</span>** (Article 6(1)(b) UK GDPR) to fulfill the agreement to provide application support.</p> </section>
+        <p>All personal data is processed on the basis of <strong>Contractual Necessity</strong> (Article 6(1)(b) UK GDPR) to fulfill the agreement to provide application support.</p>
+    </section>
 
     <section id="contact">
         <h2>6. Contact Information</h2>
-        <p>For any questions regarding these Terms, please contact us at: <a href="mailto:info@pathfindeducation.com" class="contact-link-accent">info@pathfindeducation.com</a></p> </section>
+        <p>For any questions regarding these Terms, please contact us at: <a href="mailto:info@pathfindeducation.com" class="contact-link-accent">info@pathfindeducation.com</a></p>
+    </section>
 </article>
+
+<div class="nav-link-area" style="margin-top: 20px; margin-bottom: 40px;">
+    <a href="/">
+        <span style="margin-right: 5px;">&larr;</span> Return to Homepage
+    </a>
+</div>
 
 </body>
 </html>
